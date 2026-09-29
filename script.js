@@ -161,7 +161,7 @@ const blogPosts = [
     ]
   },
   {
-    title: "Example post - how the blog works",
+    title: "Blog 1 - What makes a good level?",
     date: "2026-09-28",
     cover: "assets/blog/example-cover.png",
     intro: "A quick example showing every type of block a post can use. Delete this once your first real post is up.",
