@@ -113,21 +113,21 @@ const inspirations = [
     note: "A masterclass in using light and fog to make a place feel heavy, lonely and unsettling.",
     items: [
       {
-        image: "assets/inspiration/SilentHill2Remake.jpg",
+        image: "assets/Inspiration/SilentHill2Remake.jpg",
         credit: "VG247",
         caption: "A gritty, depressing scene",
         link: "https://www.vg247.com/multiple-silent-hill-projects-are-getting-trailers-really-soon-claims-leaker",        
         note: "This inspires my passion of level design for many reasons, the first, the mood has most certainly been encapsulated in this shot. You can feel the weight of the world on your shoulders, and yet the feeling of complete aloneness. The second, the masterful use of lighting, is a perfect example of how to use light to create a mood."
       },
             {
-        image: "assets/inspiration/SilentHill2DarkHall.jpg",
+        image: "assets/Inspiration/SilentHill2DarkHall.jpg",
         credit: "konami & Sony",       
         caption: "A dark, atmospheric hallway",
         link: "https://blog.playstation.com/2022/10/19/silent-hill-2-remake-revealed-first-gameplay-details-and-design-changes-announced/",
         note: "Another exquisite example of lighting and atmosphere. This shot captures true horror, and the feeling of being alone in a dark. Capturing the right level design, for Interiors, is equally as importnat to me as the worlds they live in. There has to be a sense of awe, somewhere that the player would be happy to spend a little more time in. Not in this case though!"
       },
       {
-        image: "assets/inspiration/SilentHillTownFall.png",
+        image: "assets/Inspiration/SilentHillTownFall.png",
         credit: "Jonathon Ducrocq",
         caption: "A foggy, unsettling street scene",
         link: "https://nohiro.artstation.com/projects/m8lwJ1",
