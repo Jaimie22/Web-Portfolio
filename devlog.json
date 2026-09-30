@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": "muog6ctzb9db",
+    "date": "2026-09-30",
+    "game": "Aetherfall",
+    "type": "Level Design",
+    "title": "Grey-boxing the world.",
+    "summary": "So as you can see, I began to create the elements of the terrain. I used for me, a Massive! 9 terrain squares for this part. I scaled a character and OH MY GOD! I know RPG's have expansive worlds, but WOW!",
+    "points": [
+      "- Grey-boxed the map as a whole. Added mountain range, and ocean layer"
+    ],
+    "image": "assets/devlog/2026-09-30-grey-boxing-the-world-muog6bkc.jpg"
+  }
+]
