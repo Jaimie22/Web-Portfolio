@@ -48,6 +48,7 @@ const projects = [
   }
 ];
 
+
 // ----- GALLERY -----
 // One entry per game. The first image in each list is used as the cover tile.
 // Put each game's images in its own folder inside images/gallery/.
@@ -148,6 +149,7 @@ const inspirations = [
   }
 ];
 
+
 // ----- BLOG -----
 // Date format: "YYYY-MM-DD". Newest posts show first automatically.
 // Each item in body is one paragraph.
@@ -164,7 +166,7 @@ const blogPosts = [
     title: "Blog 1 - What makes a good level?",
     date: "2026-09-28",
     cover: "assets/blog/example-cover.png",
-    intro: "A quick example showing every type of block a post can use. Delete this once your first real post is up.",
+    intro: "My first look into what makes a great level, and the nuances that make it stand out.",
     content: [
       "A paragraph is just text inside quotes. You can use <em>italics</em> and <strong>bold</strong> inside any text.",
       { heading: "A section heading" },
@@ -786,6 +788,129 @@ function openPostFromLink() {
   if (post) openPost(post);
 }
 
+// ----- DEVLOG -----
+// Entries are loaded from devlog.json, which admin.html updates.
+let devlogEntries = [];
+let devlogFilter = "All";
+let devlogTimer = null;
+
+function escapeHTML(text) {
+  return String(text ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  }[char]));
+}
+
+function typeClass(type) {
+  return "type-" + String(type || "update").toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
+
+async function loadDevlog() {
+  if (!document.getElementById("devlogTimeline")) return;
+
+  try {
+    const response = await fetch(`devlog.json?t=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    devlogEntries = Array.isArray(data) ? data : [];
+  } catch (error) {
+    console.warn("Devlog could not be loaded:", error);
+    devlogEntries = [];
+  }
+
+  devlogEntries.sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+  renderDevlogFilters();
+  renderDevlog();
+}
+
+function renderDevlogFilters() {
+  const container = document.getElementById("devlogFilters");
+  if (!container) return;
+
+  const games = [...new Set(devlogEntries.map(entry => entry.game).filter(Boolean))];
+  if (games.length < 2) {
+    container.innerHTML = "";
+    container.style.display = "none";
+    return;
+  }
+
+  container.style.display = "";
+  container.innerHTML = ["All", ...games].map(game => `
+    <button class="devlog-filter ${game === devlogFilter ? "active" : ""}" data-game="${escapeHTML(game)}">${escapeHTML(game)}</button>
+  `).join("");
+
+  container.querySelectorAll(".devlog-filter").forEach(button => {
+    button.addEventListener("click", () => applyDevlogFilter(button.dataset.game));
+  });
+}
+
+function renderDevlog() {
+  const timeline = document.getElementById("devlogTimeline");
+  if (!timeline) return;
+
+  timeline.classList.toggle("is-empty", devlogEntries.length === 0);
+
+  if (!devlogEntries.length) {
+    timeline.innerHTML = `<p class="devlog-empty">No entries yet. Check back soon!</p>`;
+    return;
+  }
+
+  timeline.innerHTML = devlogEntries.map((entry, i) => {
+    const points = Array.isArray(entry.points) ? entry.points.filter(Boolean) : [];
+    const visible = devlogFilter === "All" || entry.game === devlogFilter;
+
+    return `
+      <article class="devlog-entry" data-index="${i}" ${visible ? "" : "hidden"}>
+        <span class="devlog-dot ${typeClass(entry.type)}"></span>
+        <div class="devlog-card">
+          <div class="devlog-header">
+            <time class="devlog-date" datetime="${escapeHTML(entry.date)}">${entry.date ? formatDate(entry.date) : ""}</time>
+            ${entry.game ? `<span class="devlog-game">${escapeHTML(entry.game)}</span>` : ""}
+            ${entry.type ? `<span class="devlog-type ${typeClass(entry.type)}">${escapeHTML(entry.type)}</span>` : ""}
+          </div>
+          <h3>${escapeHTML(entry.title)}</h3>
+          ${entry.summary ? `<p class="devlog-summary">${escapeHTML(entry.summary)}</p>` : ""}
+          ${points.length ? `<ul class="devlog-points">${points.map(point => `<li>${escapeHTML(point)}</li>`).join("")}</ul>` : ""}
+          ${entry.image ? `
+            <button class="devlog-image" aria-label="Enlarge screenshot">
+              <img src="${escapeHTML(entry.image)}" alt="${escapeHTML(entry.title)}" loading="lazy"
+                   onerror="this.parentElement.remove();">
+            </button>` : ""}
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  timeline.querySelectorAll(".devlog-entry").forEach(element => {
+    const button = element.querySelector(".devlog-image");
+    if (!button) return;
+    const entry = devlogEntries[Number(element.dataset.index)];
+    button.addEventListener("click", () => {
+      openCollection(entry.title, [{ src: entry.image, caption: entry.title }], 0);
+    });
+  });
+}
+
+function applyDevlogFilter(game) {
+  if (game === devlogFilter) return;
+  devlogFilter = game;
+
+  document.querySelectorAll(".devlog-filter").forEach(button => {
+    button.classList.toggle("active", button.dataset.game === game);
+  });
+
+  const timeline = document.getElementById("devlogTimeline");
+  timeline.classList.add("fading");
+
+  clearTimeout(devlogTimer);
+  devlogTimer = setTimeout(() => {
+    timeline.querySelectorAll(".devlog-entry").forEach(element => {
+      const entry = devlogEntries[Number(element.dataset.index)];
+      element.hidden = !(game === "All" || entry.game === game);
+    });
+    timeline.classList.remove("fading");
+  }, 180);
+}
+
 // ----- START -----
 document.getElementById("year").textContent = new Date().getFullYear();
 buildViewer();
@@ -795,3 +920,4 @@ renderInspirationFilters();
 renderInspiration();
 renderBlog();
 openPostFromLink();
+loadDevlog();

@@ -680,6 +680,186 @@ nav a:hover {
   border-color: var(--accent);
 }
 
+/* ===== DEVLOG ===== */
+.devlog-filter {
+  padding: 0.4rem 1rem;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.devlog-filter:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.devlog-filter.active {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.devlog-timeline {
+  position: relative;
+  padding-left: 2rem;
+  transition: opacity 0.18s ease;
+}
+
+.devlog-timeline.fading {
+  opacity: 0;
+}
+
+/* The vertical line */
+.devlog-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.55rem;
+  width: 2px;
+  background: var(--border);
+}
+
+.devlog-timeline.is-empty {
+  padding-left: 0;
+}
+
+.devlog-timeline.is-empty::before {
+  display: none;
+}
+
+.devlog-empty {
+  margin: 0;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.devlog-entry {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.devlog-entry[hidden] {
+  display: none;
+}
+
+/* Colour per entry type */
+.type-feature { --type-color: var(--accent); }
+.type-level-design { --type-color: #3ecfb2; }
+.type-art { --type-color: #b38cff; }
+.type-audio { --type-color: #f5b041; }
+.type-fix { --type-color: #9a9ab0; }
+.type-milestone { --type-color: #ffd166; }
+
+.devlog-dot {
+  position: absolute;
+  top: 1.45rem;
+  left: calc(-1.4rem - 7px);
+  width: 14px;
+  height: 14px;
+  background: var(--type-color, var(--accent));
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--bg);
+}
+
+.devlog-card {
+  padding: 1.25rem 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s;
+}
+
+.devlog-card:hover {
+  border-color: var(--type-color, var(--accent));
+}
+
+.devlog-entry:has(.type-level-design) .devlog-card:hover { border-color: #3ecfb2; }
+.devlog-entry:has(.type-art) .devlog-card:hover { border-color: #b38cff; }
+.devlog-entry:has(.type-audio) .devlog-card:hover { border-color: #f5b041; }
+.devlog-entry:has(.type-milestone) .devlog-card:hover { border-color: #ffd166; }
+
+.devlog-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.devlog-date {
+  color: var(--muted);
+}
+
+.devlog-game {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.devlog-game::before {
+  content: "·";
+  margin-right: 0.5rem;
+  color: var(--muted);
+}
+
+.devlog-type {
+  padding: 0.15rem 0.6rem;
+  font-size: 0.75rem;
+  color: var(--type-color, var(--accent));
+  background: rgba(255, 255, 255, 0.06);
+  background: color-mix(in srgb, var(--type-color, var(--accent)) 15%, transparent);
+  border-radius: 999px;
+}
+
+.devlog-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+}
+
+.devlog-summary {
+  margin: 0 0 0.5rem;
+  color: var(--muted);
+}
+
+.devlog-points {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+}
+
+.devlog-points li {
+  margin-bottom: 0.25rem;
+}
+
+.devlog-image {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin-top: 1rem;
+  padding: 0;
+  overflow: hidden;
+  background: none;
+  border: 0;
+  border-radius: 8px;
+  cursor: zoom-in;
+}
+
+.devlog-image img {
+  display: block;
+  width: 100%;
+  transition: transform 0.4s ease;
+}
+
+.devlog-image:hover img {
+  transform: scale(1.03);
+}
+
 /* ===== BLOG CARDS ===== */
 .blog-list {
   display: grid;
