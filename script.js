@@ -804,6 +804,12 @@ function typeClass(type) {
   return "type-" + String(type || "update").toLowerCase().replace(/[^a-z0-9]+/g, "-");
 }
 
+// Works with both the new "images" list and older single "image" entries
+function entryImages(entry) {
+  if (Array.isArray(entry.images)) return entry.images.filter(Boolean);
+  return entry.image ? [entry.image] : [];
+}
+
 async function loadDevlog() {
   if (!document.getElementById("devlogTimeline")) return;
 
@@ -856,6 +862,7 @@ function renderDevlog() {
 
   timeline.innerHTML = devlogEntries.map((entry, i) => {
     const points = Array.isArray(entry.points) ? entry.points.filter(Boolean) : [];
+    const images = entryImages(entry);
     const visible = devlogFilter === "All" || entry.game === devlogFilter;
 
     return `
@@ -870,22 +877,29 @@ function renderDevlog() {
           <h3>${escapeHTML(entry.title)}</h3>
           ${entry.summary ? `<p class="devlog-summary">${escapeHTML(entry.summary)}</p>` : ""}
           ${points.length ? `<ul class="devlog-points">${points.map(point => `<li>${escapeHTML(point)}</li>`).join("")}</ul>` : ""}
-          ${entry.image ? `
-            <button class="devlog-image" aria-label="Enlarge screenshot">
-              <img src="${escapeHTML(entry.image)}" alt="${escapeHTML(entry.title)}" loading="lazy"
-                   onerror="this.parentElement.remove();">
-            </button>` : ""}
+          ${images.length ? `
+            <div class="devlog-gallery ${images.length === 1 ? "single" : ""}">
+              ${images.map((src, n) => `
+                <button class="devlog-image" data-image="${n}" aria-label="Enlarge screenshot ${n + 1}">
+                  <img src="${escapeHTML(src)}" alt="${escapeHTML(entry.title)}" loading="lazy"
+                       onerror="this.parentElement.remove();">
+                </button>
+              `).join("")}
+            </div>` : ""}
         </div>
       </article>
     `;
   }).join("");
 
   timeline.querySelectorAll(".devlog-entry").forEach(element => {
-    const button = element.querySelector(".devlog-image");
-    if (!button) return;
     const entry = devlogEntries[Number(element.dataset.index)];
-    button.addEventListener("click", () => {
-      openCollection(entry.title, [{ src: entry.image, caption: entry.title }], 0);
+    const images = entryImages(entry);
+
+    element.querySelectorAll(".devlog-image").forEach(button => {
+      button.addEventListener("click", () => {
+        const items = images.map(src => ({ src, caption: entry.title }));
+        openCollection(entry.title, items, Number(button.dataset.image));
+      });
     });
   });
 }
