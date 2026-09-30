@@ -155,43 +155,75 @@ const inspirations = [
 // Each item in body is one paragraph.
 const blogPosts = [
   {
-    title: "Welcome to my selection of blogs",
-    date: "2026-09-29",
-    intro: "Devlogs, design thinking and behind-the-scenes looks at the games I'm building.",
+    title: "Blog 1 - What makes a good level designer?",
+    date: "2026-09-24",
+    cover: "assets/Blogs/Blog1Image.png",
+    intro: "My first look into what makes a great level designer, utlising some of big names in the industry!.",
     content: [
-      "Here, is where I document everything I learn about level design, and the games I build. I will be posting devlogs, design thinking, and behind-the-scenes looks at the games I'm building. Stay tuned!",
-    ]
-  },
-  {
-    title: "Blog 1 - What makes a good level?",
-    date: "2026-09-28",
-    cover: "assets/blog/example-cover.png",
-    intro: "My first look into what makes a great level, and the nuances that make it stand out.",
-    content: [
-      "A paragraph is just text inside quotes. You can use <em>italics</em> and <strong>bold</strong> inside any text.",
-      { heading: "A section heading" },
-      "Headings break a long post into sections, which makes 1000 words much easier to read.",
+      "<em>A famous game development quote from id Software veteran Jay Wilbur is: “Level design is where the rubber hits the road”.</em> This is a great quote, because it really captures the essence of what level design is all about. It's the part of game development where all the ideas and concepts come together, and the player gets to experience them in a tangible way. It's where the player's skills and abilities are put to the test, and where the game's mechanics are fully realized.",
+      { heading: "The rubber & the Road" },
+      "With the words of the great jay Wilbur in mind, it draws attention to whom he was referring. Cliff Bleszinski, a level designer at id Software, who was responsible for some of the most iconic levels in gaming history. Bleszinski's work on games like Doom and Quake helped to define the first-person shooter genre, and his levels were known for their tight design, clever use of space, and intense action.",
+      "If I use my limited knowledge of level design, I can see how Bleszinski's work exemplifies these principles. For example, in my horror project Enjoy your Stay!, theres use of a door mechanic, whereby the player has to grab hold, and push with a degree of resistence. a simple mechanic to some, but in the eyes of a level designer, this adds gravity, tension, and a sense of unknowning, as openning the door too quick could alert the pursuer, or too slow could mean chances of escape are limited. This now gives creedence to Jay's words. My door mechanic, is the rubber hitting the road!",
       {
-        image: "assets/blog/example-01.png",
-        caption: "What this image shows and why it matters",
-        credit: "Bloober Team / Konami",
+        image: "assets/Blogs/Blog1Image.png",
+        caption: "Jacincto, and its creatior",
+        credit: "id Software & Cliff Bleszinski & microsoft",
         link: ""
       },
       {
-        quote: "Fundamentally integrates player perception and active problem solving, which builds investment.",
-        cite: "Matthias Worch & Harvey Smith, GDC 2010"
+        quote: "Thus a good designer has to both dread and seek out other people’s advice.</em> by Jason Rubin",
+        cite: "Andy Gavin’s 2011 blog series ‘Making Crash Bandicoot’."
       },
-      { list: ["A bullet point", "Another bullet point"] },
-      "End with your own conclusion. That's the part readers remember."
+      { list: ["Utilise interesting gameplay mechanics", "Help to add feeling to the levels you design"] },
+      "In conlusion, taking notes of what some of the big names in the gaming industry say, I find that the best level designers are those who can balance creativity with functionality, and who are always willing to learn from others."
     ],
     sources: [
       {
-        text: "Totten, C. W. (2019). <em>An Architectural Approach to Level Design</em> (2nd ed.). CRC Press.",
-        link: "https://books.google.com/books/about/Architectural_Approach_to_Level_Design.html?id=PQqWDwAAQBAJ"
+        text: "Bleszinski, C. (2000). <em>The Art and Science of Level Design</em>. Game Developers Conference.",
+        link: "https://web.archive.org/web/20021203193328/http://www.cliffyb.com/rants/art-sci-ld.shtml"
       },
       {
-        text: "Smith, H. & Worch, M. (2010). <em>What Happened Here? Environmental Storytelling</em>. Game Developers Conference.",
-        link: "https://gdcvault.com/play/1012647/What-Happened-Here-Environmental"
+        text: "The Level Design Book. <em>History of the level designer</em>.",
+        link: "https://book.leveldesignbook.com/culture/history-level-designer"
+      }
+    ]
+  },
+  {
+    title: "Blog 2 - How to add feeling to your levels?",
+    date: "2026-09-30",
+    cover: "assets/Blogs/Blog2Image.png",
+    intro: "What could an aspiring artist do, to give the levels feeling?, personality?.",
+    content: [
+      "Coming across a blog from I imagine, another aspiring designer, Lena Oduya, She writes and I quote, <em>Great levels don't happen by accident. They're carefully engineered experiences that guide, challenge, and surprise players.</em> This is a great quote, because it really captures the essence of what level design is all about. It's the part of game development where all the ideas and concepts come together, and the player gets to experience them in a tangible way. It's where the player's skills and abilities are put to the test, and where the game's mechanics are fully realized.",
+      { heading: "Feeling Immersed yet?" },
+      "As you may know, there's a plethora of ways in which a designer, of any gravitas, can add feeling to their designs. First and most obivous i'd say, is the environment. Where are they? in a city? in the woods?. Knowing what world you have to create, then brings everything else into focus.",
+      "Now, this may be rather nerdy? but it works I assure you! What i like to do, irrespective of the game, Is find a centralised, hub-like place in the game, and just stand for five minutes. I like to feel by the sounds I hear, or the sights I see. I want to feel Like im the character standing in that world. I recommend giving it a go, the next time you fire up your favourite gamee!",
+      "From there, of course your choice of narrative, lighting, assets, or paths to take, then becomes more clearer. Giving the player options, would most certainly inspire some creativity on the part of the player. Contray to this, assuming a horror game? Give the player as little means as possible!",
+      {
+        image: "assets/Blogs/Blog2Image.png",
+        caption: "Feeling pure Immersion",
+        credit: "Easemate US Ai image generator",
+        link: "https://www.easemate.ai/?index="
+      },
+      {
+        quote: "<em>To be a great designer, you need to look a little deeper into how people think, and act</em> - Paul Boag",
+        cite: "<em>ux design quotes to inspire and motivate you</em>"
+      },
+      { list: ["Understand what the player expects", "Add a delicate flow, to keep the player engaged"] },
+      "In conlusion, A world can only come to life, if you pour yourself into it. A great story can help give a feeling to the levels, but the sights, the sounds, these in my opinion are more tangible, and give whatever I create the meaning i'm looking for in my projects."
+    ],
+    sources: [
+      {
+        text: "Tripo3D. (2023). <em>Level Design: The Art of Crafting Engaging Game Worlds</em>. Tripo3D Blog.",
+        link: "https://www.tripo3d.ai/blog/level-design"
+      },
+      {
+        text: "Lena Oduya - <em>Level Design Principles: How to Build Game Levels That Players Remember</em>",
+        link: "hhttps://gamedesignpath.com/blog/level-design-principles-how-to-build-great-game-levels"
+      },
+      {
+        text: "Kristina Guzikova - 100 ux design quotes to inspire and motivate you",
+        link: "https://www.intechnic.com/blog/100-ux-design-quotes-to-inspire-and-motivate-you/"
       }
     ]
   }
