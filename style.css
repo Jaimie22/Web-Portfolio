@@ -705,8 +705,6 @@ nav a:hover {
 }
 
 .devlog-timeline {
-  position: relative;
-  padding-left: 2rem;
   transition: opacity 0.18s ease;
 }
 
@@ -714,38 +712,10 @@ nav a:hover {
   opacity: 0;
 }
 
-/* The vertical line */
-.devlog-timeline::before {
-  content: "";
-  position: absolute;
-  top: 0.5rem;
-  bottom: 0.5rem;
-  left: 0.55rem;
-  width: 2px;
-  background: var(--border);
-}
-
-.devlog-timeline.is-empty {
-  padding-left: 0;
-}
-
-.devlog-timeline.is-empty::before {
-  display: none;
-}
-
 .devlog-empty {
   margin: 0;
   font-style: italic;
   color: var(--muted);
-}
-
-.devlog-entry {
-  position: relative;
-  margin-bottom: 1.5rem;
-}
-
-.devlog-entry[hidden] {
-  display: none;
 }
 
 /* Colour per entry type */
@@ -756,10 +726,69 @@ nav a:hover {
 .type-fix { --type-color: #9a9ab0; }
 .type-milestone { --type-color: #ffd166; }
 
+/* ----- The sliding row ----- */
+.devlog-slider {
+  position: relative;
+}
+
+.devlog-track {
+  display: flex;
+  gap: 1.25rem;
+  padding: 0.25rem 0.25rem 1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.devlog-track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.devlog-track::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+
+.devlog-track:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: var(--radius);
+}
+
+.devlog-entry {
+  position: relative;
+  display: flex;
+  flex: 0 0 clamp(260px, 80vw, 340px);
+  flex-direction: column;
+  padding-top: 1.75rem;
+  scroll-snap-align: start;
+}
+
+.devlog-entry[hidden] {
+  display: none;
+}
+
+/* Timeline line running across the top of the cards */
+.devlog-entry::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 0;
+  right: -1.25rem;
+  height: 2px;
+  background: var(--border);
+}
+
+.devlog-entry:last-child::before {
+  right: 0;
+}
+
 .devlog-dot {
   position: absolute;
-  top: 1.45rem;
-  left: calc(-1.4rem - 7px);
+  top: 0;
+  left: 1.25rem;
   width: 14px;
   height: 14px;
   background: var(--type-color, var(--accent));
@@ -767,11 +796,19 @@ nav a:hover {
   box-shadow: 0 0 0 4px var(--bg);
 }
 
+/* ----- Cards ----- */
 .devlog-card {
-  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  max-height: 520px;
+  padding: 1.25rem 1.4rem;
+  overflow-y: auto;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
   transition: border-color 0.2s;
 }
 
@@ -779,32 +816,17 @@ nav a:hover {
   border-color: var(--type-color, var(--accent));
 }
 
-.devlog-entry:has(.type-level-design) .devlog-card:hover { border-color: #3ecfb2; }
-.devlog-entry:has(.type-art) .devlog-card:hover { border-color: #b38cff; }
-.devlog-entry:has(.type-audio) .devlog-card:hover { border-color: #f5b041; }
-.devlog-entry:has(.type-milestone) .devlog-card:hover { border-color: #ffd166; }
-
 .devlog-header {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   font-size: 0.85rem;
 }
 
 .devlog-date {
-  color: var(--muted);
-}
-
-.devlog-game {
-  font-weight: 600;
-  color: var(--text);
-}
-
-.devlog-game::before {
-  content: "·";
-  margin-right: 0.5rem;
   color: var(--muted);
 }
 
@@ -817,19 +839,28 @@ nav a:hover {
   border-radius: 999px;
 }
 
+.devlog-game {
+  margin: 0 0 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
 .devlog-card h3 {
   margin: 0 0 0.4rem;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
 }
 
 .devlog-summary {
   margin: 0 0 0.5rem;
+  font-size: 0.95rem;
   color: var(--muted);
 }
 
 .devlog-points {
-  margin: 0.5rem 0 0;
+  margin: 0.25rem 0 0;
   padding-left: 1.2rem;
+  font-size: 0.9rem;
   color: var(--muted);
 }
 
@@ -837,14 +868,27 @@ nav a:hover {
   margin-bottom: 0.25rem;
 }
 
+/* ----- Screenshots ----- */
+.devlog-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.devlog-gallery.single {
+  grid-template-columns: 1fr;
+}
+
 .devlog-image {
+  position: relative;
   display: block;
   width: 100%;
-  max-width: 420px;
-  margin-top: 1rem;
+  aspect-ratio: 16 / 9;
   padding: 0;
   overflow: hidden;
-  background: none;
+  background: #0c0c14;
   border: 0;
   border-radius: 8px;
   cursor: zoom-in;
@@ -853,11 +897,85 @@ nav a:hover {
 .devlog-image img {
   display: block;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.4s ease;
 }
 
 .devlog-image:hover img {
-  transform: scale(1.03);
+  transform: scale(1.05);
+}
+
+.devlog-more {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(12, 12, 20, 0.65);
+}
+
+/* ----- Arrows ----- */
+.devlog-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: none;
+  width: 44px;
+  height: 44px;
+  transform: translateY(-50%);
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--text);
+  background: rgba(12, 12, 20, 0.85);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.devlog-slider.scrollable .devlog-arrow {
+  display: block;
+}
+
+.devlog-prev {
+  left: -0.75rem;
+}
+
+.devlog-next {
+  right: -0.75rem;
+}
+
+.devlog-arrow:hover:not(:disabled) {
+  background: var(--accent);
+}
+
+.devlog-arrow:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Newest / Oldest guide, only when there's something to scroll */
+.devlog-scale {
+  display: none;
+  justify-content: space-between;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.devlog-slider.scrollable + .devlog-scale {
+  display: flex;
+}
+
+/* On phones, swiping replaces the arrows */
+@media (max-width: 600px) {
+  .devlog-arrow {
+    display: none !important;
+  }
 }
 
 /* ===== BLOG CARDS ===== */

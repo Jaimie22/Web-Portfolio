@@ -793,6 +793,8 @@ function openPostFromLink() {
 let devlogEntries = [];
 let devlogFilter = "All";
 let devlogTimer = null;
+let updateDevlogArrows = () => {};
+const DEVLOG_MAX_THUMBS = 4;
 
 function escapeHTML(text) {
   return String(text ?? "").replace(/[&<>"']/g, char => ({
@@ -826,6 +828,7 @@ async function loadDevlog() {
   devlogEntries.sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
   renderDevlogFilters();
   renderDevlog();
+  window.addEventListener("resize", () => updateDevlogArrows());
 }
 
 function renderDevlogFilters() {
@@ -849,6 +852,40 @@ function renderDevlogFilters() {
   });
 }
 
+function devlogEntryHTML(entry, i) {
+  const points = Array.isArray(entry.points) ? entry.points.filter(Boolean) : [];
+  const images = entryImages(entry);
+  const shown = images.slice(0, DEVLOG_MAX_THUMBS);
+  const extra = images.length - shown.length;
+  const visible = devlogFilter === "All" || entry.game === devlogFilter;
+
+  return `
+    <article class="devlog-entry" data-index="${i}" ${visible ? "" : "hidden"}>
+      <span class="devlog-dot ${typeClass(entry.type)}"></span>
+      <div class="devlog-card ${typeClass(entry.type)}">
+        <div class="devlog-header">
+          <time class="devlog-date" datetime="${escapeHTML(entry.date)}">${entry.date ? formatDate(entry.date) : ""}</time>
+          ${entry.type ? `<span class="devlog-type ${typeClass(entry.type)}">${escapeHTML(entry.type)}</span>` : ""}
+        </div>
+        ${entry.game ? `<p class="devlog-game">${escapeHTML(entry.game)}</p>` : ""}
+        <h3>${escapeHTML(entry.title)}</h3>
+        ${entry.summary ? `<p class="devlog-summary">${escapeHTML(entry.summary)}</p>` : ""}
+        ${points.length ? `<ul class="devlog-points">${points.map(point => `<li>${escapeHTML(point)}</li>`).join("")}</ul>` : ""}
+        ${shown.length ? `
+          <div class="devlog-gallery ${shown.length === 1 ? "single" : ""}">
+            ${shown.map((src, n) => `
+              <button class="devlog-image" data-image="${n}" aria-label="Enlarge screenshot ${n + 1}">
+                <img src="${escapeHTML(src)}" alt="${escapeHTML(entry.title)}" loading="lazy"
+                     onerror="this.parentElement.remove();">
+                ${n === shown.length - 1 && extra > 0 ? `<span class="devlog-more">+${extra}</span>` : ""}
+              </button>
+            `).join("")}
+          </div>` : ""}
+      </div>
+    </article>
+  `;
+}
+
 function renderDevlog() {
   const timeline = document.getElementById("devlogTimeline");
   if (!timeline) return;
@@ -857,40 +894,22 @@ function renderDevlog() {
 
   if (!devlogEntries.length) {
     timeline.innerHTML = `<p class="devlog-empty">No entries yet. Check back soon!</p>`;
+    updateDevlogArrows = () => {};
     return;
   }
 
-  timeline.innerHTML = devlogEntries.map((entry, i) => {
-    const points = Array.isArray(entry.points) ? entry.points.filter(Boolean) : [];
-    const images = entryImages(entry);
-    const visible = devlogFilter === "All" || entry.game === devlogFilter;
+  timeline.innerHTML = `
+    <div class="devlog-slider">
+      <button class="devlog-arrow devlog-prev" aria-label="Newer entries">&#8249;</button>
+      <div class="devlog-track" tabindex="0" aria-label="Devlog entries, newest first">
+        ${devlogEntries.map(devlogEntryHTML).join("")}
+      </div>
+      <button class="devlog-arrow devlog-next" aria-label="Older entries">&#8250;</button>
+    </div>
+    <div class="devlog-scale"><span>&larr; Newest</span><span>Oldest &rarr;</span></div>
+  `;
 
-    return `
-      <article class="devlog-entry" data-index="${i}" ${visible ? "" : "hidden"}>
-        <span class="devlog-dot ${typeClass(entry.type)}"></span>
-        <div class="devlog-card">
-          <div class="devlog-header">
-            <time class="devlog-date" datetime="${escapeHTML(entry.date)}">${entry.date ? formatDate(entry.date) : ""}</time>
-            ${entry.game ? `<span class="devlog-game">${escapeHTML(entry.game)}</span>` : ""}
-            ${entry.type ? `<span class="devlog-type ${typeClass(entry.type)}">${escapeHTML(entry.type)}</span>` : ""}
-          </div>
-          <h3>${escapeHTML(entry.title)}</h3>
-          ${entry.summary ? `<p class="devlog-summary">${escapeHTML(entry.summary)}</p>` : ""}
-          ${points.length ? `<ul class="devlog-points">${points.map(point => `<li>${escapeHTML(point)}</li>`).join("")}</ul>` : ""}
-          ${images.length ? `
-            <div class="devlog-gallery ${images.length === 1 ? "single" : ""}">
-              ${images.map((src, n) => `
-                <button class="devlog-image" data-image="${n}" aria-label="Enlarge screenshot ${n + 1}">
-                  <img src="${escapeHTML(src)}" alt="${escapeHTML(entry.title)}" loading="lazy"
-                       onerror="this.parentElement.remove();">
-                </button>
-              `).join("")}
-            </div>` : ""}
-        </div>
-      </article>
-    `;
-  }).join("");
-
+  // Screenshot clicks open the viewer with all of that entry's images
   timeline.querySelectorAll(".devlog-entry").forEach(element => {
     const entry = devlogEntries[Number(element.dataset.index)];
     const images = entryImages(entry);
@@ -902,6 +921,29 @@ function renderDevlog() {
       });
     });
   });
+
+  // Slider arrows
+  const slider = timeline.querySelector(".devlog-slider");
+  const track = timeline.querySelector(".devlog-track");
+  const prev = timeline.querySelector(".devlog-prev");
+  const next = timeline.querySelector(".devlog-next");
+
+  updateDevlogArrows = () => {
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    slider.classList.toggle("scrollable", maxScroll > 2);
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= maxScroll - 2;
+  };
+
+  prev.addEventListener("click", () => {
+    track.scrollBy({ left: -track.clientWidth * 0.9, behavior: "smooth" });
+  });
+  next.addEventListener("click", () => {
+    track.scrollBy({ left: track.clientWidth * 0.9, behavior: "smooth" });
+  });
+  track.addEventListener("scroll", updateDevlogArrows, { passive: true });
+
+  updateDevlogArrows();
 }
 
 function applyDevlogFilter(game) {
@@ -921,17 +963,11 @@ function applyDevlogFilter(game) {
       const entry = devlogEntries[Number(element.dataset.index)];
       element.hidden = !(game === "All" || entry.game === game);
     });
+
+    const track = timeline.querySelector(".devlog-track");
+    if (track) track.scrollLeft = 0;
+    updateDevlogArrows();
+
     timeline.classList.remove("fading");
   }, 180);
 }
-
-// ----- START -----
-document.getElementById("year").textContent = new Date().getFullYear();
-buildViewer();
-buildReader();
-renderProjects();
-renderInspirationFilters();
-renderInspiration();
-renderBlog();
-openPostFromLink();
-loadDevlog();
