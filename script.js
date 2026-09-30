@@ -971,3 +971,14 @@ function applyDevlogFilter(game) {
     timeline.classList.remove("fading");
   }, 180);
 }
+
+// ----- START -----
+document.getElementById("year").textContent = new Date().getFullYear();
+buildViewer();
+buildReader();
+renderProjects();
+renderInspirationFilters();
+renderInspiration();
+renderBlog();
+openPostFromLink();
+loadDevlog();
