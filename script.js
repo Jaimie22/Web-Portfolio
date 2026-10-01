@@ -57,7 +57,7 @@ const galleryGames = [
   {
     game: "R.E.M - A game of Dreams",
     images: [
-      { src: "assets/gallery/rem/01.png", caption: "Screenshot 1" },
+      { src: "assets/REMFrontCover.png", caption: "R.E.M - A game of Dreams Cover Concept (Not Final)" },
       { src: "assets/gallery/rem/02.png", caption: "Screenshot 2" },
       { src: "assets/gallery/rem/03.png", caption: "Screenshot 3" },
       { youtube: "VIDEO_ID", caption: "Trailer" }
@@ -84,7 +84,7 @@ const galleryGames = [
   {
     game: "Enjoy your stay!",
     images: [
-      { src: "assets/gallery/enjoy-your-stay/01.png", caption: "Screenshot 1" },
+      { src: "assets/EYSCover.png", caption: "Enjoy your stay! Cover Concept (Not Final)" },
       { src: "assets/gallery/enjoy-your-stay/02.png", caption: "Screenshot 2" },
       { src: "assets/gallery/enjoy-your-stay/03.png", caption: "Screenshot 3" },
       { youtube: "VIDEO_ID", caption: "Trailer" }
@@ -93,7 +93,7 @@ const galleryGames = [
   {
     game: "Aetherfall",
     images: [
-      { src: "assets/gallery/aetherfall/01.png", caption: "Screenshot 1" },
+      { src: "assets/AetherfallCover.png", caption: "Aetherfall Cover Concept (Not Final)" },
       { src: "assets/gallery/aetherfall/02.png", caption: "Screenshot 2" },
       { src: "assets/gallery/aetherfall/03.png", caption: "Screenshot 3" },
       { youtube: "VIDEO_ID", caption: "Trailer" }
@@ -129,7 +129,7 @@ const inspirations = [
       },
       {
         image: "assets/Inspiration/SilentHillTownFall.png",
-        credit: "Jonathon Ducrocq",
+        credit: "Jonathan Ducrocq",
         caption: "A foggy, unsettling street scene",
         link: "https://nohiro.artstation.com/projects/m8lwJ1",
         note: "This from Konami's most recent installation to the franchise, Silent Hill Town Fall. I really like the way the lighting is used to create a sense of dread and unease. The fog and the shadows create a sense of mystery and tension, making the player feel like they are in a dangerous and unpredictable environment. To me, this creatres a sense of immersion and engagement, as the player is constantly on edge and unsure of what might be lurking around the next corner.",
@@ -230,7 +230,7 @@ const blogPosts = [
 ];
 
 // =====================================================
-// YOU DON'T NEED TO EDIT BELOW THIS LINE
+// Helpers & Builders
 // =====================================================
 
 // ----- HELPERS -----
