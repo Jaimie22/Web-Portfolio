@@ -226,12 +226,6 @@ const blogPosts = [
         link: "https://www.intechnic.com/blog/100-ux-design-quotes-to-inspire-and-motivate-you/"
       }
     ]
-  }
-];
-
-// =====================================================
-// Helpers & Builders
-// =====================================================
   },
   {
     title: "Blog 3 - Can your levels tell the story?",
@@ -269,6 +263,7 @@ const blogPosts = [
     ]
   }
 ];
+
 
 
 // ----- HELPERS -----
