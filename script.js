@@ -258,7 +258,7 @@ const blogPosts = [
       },
       {
         text: "Emily Short, 2016 - <em>Plot shaped level design - Interactive Storytelling.</em>",
-        link: "https://gamedesignpath.com/blog/level-design-principles-how-to-build-great-game-levels"
+        link: "https://emshort.blog/2016/05/18/plot-shaped-level-design/"
       },
     ]
   }
