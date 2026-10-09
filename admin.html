@@ -1,6 +1,9 @@
-//This is the admin page for the devlog. It allows you to add, edit and delete entries in the devlog.json file in your GitHub repository. 
-//The entries are then displayed on the live site in the devlog section.
 <!DOCTYPE html>
+<!--
+  This is the admin page for the devlog. It allows you to add, edit and delete
+  entries in the devlog.json file in your GitHub repository.
+  The entries are then displayed on the live site in the devlog section.
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -66,12 +69,6 @@
       color: var(--muted);
     }
 
-    .admin label.checkbox-label {
-      flex-direction: row;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
     .admin input,
     .admin select,
     .admin textarea {
@@ -81,6 +78,10 @@
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 8px;
+    }
+
+    .admin input[type="checkbox"] {
+      padding: 0;
     }
 
     .admin input:focus,
@@ -147,12 +148,39 @@
       border-color: var(--accent);
     }
 
-    .image-preview img {
+    /* Screenshot thumbnails */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .image-grid:empty {
+      display: none;
+    }
+
+    .image-grid img {
       display: block;
-      max-width: 100%;
-      max-height: 220px;
-      margin-top: 0.5rem;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
       border-radius: 8px;
+      transition: opacity 0.2s;
+    }
+
+    .admin label.image-chip {
+      gap: 0.35rem;
+      font-size: 0.8rem;
+    }
+
+    .image-chip span {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .image-chip.removing img {
+      opacity: 0.3;
     }
 
     .list-header {
@@ -279,13 +307,16 @@
           <label class="full">What you did (one point per line)
             <textarea id="points"></textarea>
           </label>
-          <label class="full">Screenshot (optional)
-            <input id="image" type="file" accept="image/*">
+
+          <div class="full" id="existingImagesWrap" hidden>
+            <p class="admin-hint">Current screenshots. Tick any you want to remove.</p>
+            <div class="image-grid" id="existingImages"></div>
+          </div>
+
+          <label class="full">Add screenshots (optional, you can pick several at once)
+            <input id="images" type="file" accept="image/*" multiple>
           </label>
-          <div class="full image-preview" id="imagePreview"></div>
-          <label class="full checkbox-label" id="removeImageLabel" hidden>
-            <input id="removeImage" type="checkbox"> Remove the current screenshot
-          </label>
+          <div class="full image-grid" id="imagePreview"></div>
         </div>
         <div class="admin-actions">
           <button id="publish" class="button" type="submit">Publish</button>
@@ -318,6 +349,7 @@
     const DATA_PATH = "devlog.json";
     const IMAGE_FOLDER = "assets/devlog";
     const MAX_IMAGE_WIDTH = 1600;
+    const MAX_IMAGES_PER_ENTRY = 10;
 
     // =====================================================
     // YOU DON'T NEED TO EDIT BELOW THIS LINE
@@ -395,6 +427,13 @@
       return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
     }
 
+    // Works with both the new "images" list and older single "image" entries
+    function entryImages(entry) {
+      if (!entry) return [];
+      if (Array.isArray(entry.images)) return entry.images.filter(Boolean);
+      return entry.image ? [entry.image] : [];
+    }
+
     function toBase64(text) {
       const bytes = new TextEncoder().encode(text);
       let binary = "";
@@ -422,10 +461,10 @@
             canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
             resolve(canvas.toDataURL("image/jpeg", 0.85).split(",")[1]);
           };
-          img.onerror = () => reject(new Error("That file couldn't be read as an image."));
+          img.onerror = () => reject(new Error(`"${file.name}" couldn't be read as an image.`));
           img.src = reader.result;
         };
-        reader.onerror = () => reject(new Error("Couldn't read the file."));
+        reader.onerror = () => reject(new Error(`Couldn't read "${file.name}".`));
         reader.readAsDataURL(file);
       });
     }
@@ -516,18 +555,22 @@
         return;
       }
 
-      list.innerHTML = entries.map(entry => `
-        <div class="entry-row">
-          <div>
-            <div class="entry-meta">${escapeHTML(entry.date)} · ${escapeHTML(entry.game)} · ${escapeHTML(entry.type)}</div>
-            <div class="entry-title">${escapeHTML(entry.title)}</div>
+      list.innerHTML = entries.map(entry => {
+        const count = entryImages(entry).length;
+        const imageNote = count ? ` · ${count} ${count === 1 ? "screenshot" : "screenshots"}` : "";
+        return `
+          <div class="entry-row">
+            <div>
+              <div class="entry-meta">${escapeHTML(entry.date)} · ${escapeHTML(entry.game)} · ${escapeHTML(entry.type)}${imageNote}</div>
+              <div class="entry-title">${escapeHTML(entry.title)}</div>
+            </div>
+            <div class="entry-buttons">
+              <button data-edit="${escapeHTML(entry.id)}">Edit</button>
+              <button class="danger" data-delete="${escapeHTML(entry.id)}">Delete</button>
+            </div>
           </div>
-          <div class="entry-buttons">
-            <button data-edit="${escapeHTML(entry.id)}">Edit</button>
-            <button class="danger" data-delete="${escapeHTML(entry.id)}">Delete</button>
-          </div>
-        </div>
-      `).join("");
+        `;
+      }).join("");
 
       list.querySelectorAll("[data-edit]").forEach(button => {
         button.addEventListener("click", () => startEdit(button.dataset.edit));
@@ -542,13 +585,52 @@
       $("gameOptions").innerHTML = games.map(game => `<option value="${escapeHTML(game)}"></option>`).join("");
     }
 
+    // ----- Screenshots in the form -----
+    function renderExistingImages(images) {
+      const wrap = $("existingImagesWrap");
+      const grid = $("existingImages");
+
+      if (!images.length) {
+        grid.innerHTML = "";
+        wrap.hidden = true;
+        return;
+      }
+
+      grid.innerHTML = images.map(src => `
+        <label class="image-chip">
+          <img src="${escapeHTML(src)}" alt="">
+          <span><input type="checkbox" class="remove-image" data-path="${escapeHTML(src)}"> Remove</span>
+        </label>
+      `).join("");
+      wrap.hidden = false;
+
+      grid.querySelectorAll(".remove-image").forEach(box => {
+        box.addEventListener("change", () => {
+          box.closest(".image-chip").classList.toggle("removing", box.checked);
+        });
+      });
+    }
+
+    function renderNewImagePreviews() {
+      const files = [...$("images").files];
+      $("imagePreview").innerHTML = files.map(file => `
+        <img src="${URL.createObjectURL(file)}" alt="">
+      `).join("");
+    }
+
+    function keptExistingImages() {
+      return [...document.querySelectorAll(".remove-image")]
+        .filter(box => !box.checked)
+        .map(box => box.dataset.path);
+    }
+
     // ----- Form -----
     function resetForm() {
       $("entryForm").reset();
       $("date").value = today();
       $("type").value = TYPES[0];
       $("imagePreview").innerHTML = "";
-      $("removeImageLabel").hidden = true;
+      renderExistingImages([]);
       $("formTitle").textContent = "New entry";
       $("publish").textContent = "Publish";
       $("cancelEdit").hidden = true;
@@ -566,10 +648,9 @@
       $("title").value = entry.title || "";
       $("summary").value = entry.summary || "";
       $("points").value = (entry.points || []).join("\n");
-      $("image").value = "";
-      $("removeImage").checked = false;
-      $("removeImageLabel").hidden = !entry.image;
-      $("imagePreview").innerHTML = entry.image ? `<img src="${escapeHTML(entry.image)}" alt="">` : "";
+      $("images").value = "";
+      $("imagePreview").innerHTML = "";
+      renderExistingImages(entryImages(entry));
       $("formTitle").textContent = "Editing entry";
       $("publish").textContent = "Save changes";
       $("cancelEdit").hidden = false;
@@ -593,21 +674,28 @@
         return;
       }
 
-      const existing = editingId ? entries.find(item => item.id === editingId) : null;
+      const keptImages = editingId ? keptExistingImages() : [];
+      const newFiles = [...$("images").files];
+
+      if (keptImages.length + newFiles.length > MAX_IMAGES_PER_ENTRY) {
+        setStatus(`That's more than ${MAX_IMAGES_PER_ENTRY} screenshots for one entry. Try splitting it into two entries.`, "error");
+        return;
+      }
+
       const previousEntries = entries.slice();
       const publishButton = $("publish");
       publishButton.disabled = true;
 
       try {
-        let imagePath = existing && !$("removeImage").checked ? existing.image || "" : "";
+        const images = keptImages.slice();
+        const stamp = Date.now().toString(36);
 
-        const file = $("image").files[0];
-        if (file) {
-          setStatus("Uploading screenshot...");
-          const base64 = await prepareImage(file);
-          const path = `${IMAGE_FOLDER}/${date}-${slugify(title) || "entry"}-${Date.now().toString(36)}.jpg`;
-          await putFile(path, base64, `Devlog screenshot: ${title}`);
-          imagePath = path;
+        for (let n = 0; n < newFiles.length; n++) {
+          setStatus(`Uploading screenshot ${n + 1} of ${newFiles.length}...`);
+          const base64 = await prepareImage(newFiles[n]);
+          const path = `${IMAGE_FOLDER}/${date}-${slugify(title) || "entry"}-${stamp}-${n + 1}.jpg`;
+          await putFile(path, base64, `Devlog screenshot: ${title} (${n + 1})`);
+          images.push(path);
         }
 
         const entry = {
@@ -618,7 +706,7 @@
           title,
           summary: $("summary").value.trim(),
           points: $("points").value.split("\n").map(line => line.trim()).filter(Boolean),
-          image: imagePath
+          images
         };
 
         if (editingId) {
@@ -669,11 +757,7 @@
     resetForm();
     updateGameOptions();
 
-    $("image").addEventListener("change", () => {
-      const file = $("image").files[0];
-      $("imagePreview").innerHTML = file ? `<img src="${URL.createObjectURL(file)}" alt="">` : "";
-    });
-
+    $("images").addEventListener("change", renderNewImagePreviews);
     $("entryForm").addEventListener("submit", handleSubmit);
     $("cancelEdit").addEventListener("click", resetForm);
 

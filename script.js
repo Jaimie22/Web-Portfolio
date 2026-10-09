@@ -226,12 +226,44 @@ const blogPosts = [
         link: "https://www.intechnic.com/blog/100-ux-design-quotes-to-inspire-and-motivate-you/"
       }
     ]
+  },
+  {
+    title: "Blog 3 - Can your levels tell the story?",
+    date: "2026-10-02",
+    cover: "assets/Blogs/Blog3Image.png",
+    intro: "With level design, can it tell the story, over and above the narrative?.",
+    content: [
+      "Not everyone would natutrally think to themselves <em>This level is really telling the story!</em>, but in actiual fact, it can. And sometimes, even more so than the narrative. A great example of this, is the game <em>Silent Hill 2</em>, where the level design, and the environment, tells the story of the characters, and their inner turmoil. The use of lighting, and the placement of objects, can tell a story without a single word being spoken.",
+      "Silent hill being one example, but of course there are many more in the world, that can do this too. When designing a level, or at least a memorable one, simply put, you must consider the following aspects: The environment. Where is the player? The lighting. Bright and beautiful?, or dark and dingy?, the audio. Can you stand on a mountain and almost feel the wind brushing past you? These arejust some of the things that can be used to tell a story through the level, and to create a sense of immersion for the player.",
+      { heading: "Has the level told the story?" },
+      "A source I have cited below, states,<em>Your job is to make it as hard as possible for the player to finish your game without understanding your story.</em>. I think Personally, that's a vewry intersting way to broach such a subject. A level design is made up of a multitude of elements, and with this in mind, one of which that comes to mind, is pacing. The pacing of a level can be used to tell a story, and to create a sense of tension, or relief. A well-paced level can make the player feel like they are on a journey, and that they are experiencing the story as it unfolds.",
+      "Now as I'm sure i've mentioned in a previous blog, the world itself to me, tells the story better than anything! If you enter a world likened to Bethesda's Skyrim for example, you get the feeling of sparce, cold, and desolate. this to me tells the story of a world that is harsh, and unforgiving. The player is immediately immersed in the world, and they can feel the weight of the story on their shoulders. The level design, and the environment, tells the story of the world, and the characters that inhabit it.",
+      {
+        image: "assets/Blogs/Blog3Image.png",
+        caption: "Telling a book style story through level design",
+        credit: "Easemate US Ai image generator",
+        link: "https://www.easemate.ai/?index="
+      },
+      {
+        quote: "<em>Every level is a chance to find a better version of yourself.</em>– Marin Cole",
+        cite: "<em>lifesuccessjournal.com/gaming-quotes</em>"
+      },
+      { list: ["Understand what the player expects", "Give enough of a challenge, even if it's a small one"] },
+      "In conlusion, and in my own thoughts, I would agree that a  world has to be just complex enough, that it gives the player the chance to take a step back to examine it. And this is where you could invoke the majesty of large open world spaces, or set the tone in a dark horror scene.."
+    ],
+    sources: [
+      {
+        text: "The level design book. <em>Why tell a story with level design?</em>.",
+        link: "https://book.leveldesignbook.com/process/env-art/storytelling"
+      },
+      {
+        text: "Emily Short, 2016 - <em>Plot shaped level design - Interactive Storytelling.</em>",
+        link: "https://gamedesignpath.com/blog/level-design-principles-how-to-build-great-game-levels"
+      },
+    ]
   }
 ];
 
-// =====================================================
-// YOU DON'T NEED TO EDIT BELOW THIS LINE
-// =====================================================
 
 // ----- HELPERS -----
 function isVideoItem(item) {
