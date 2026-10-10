@@ -191,6 +191,7 @@ const EDUCATIONAL_BLOGS = [
       { heading: "Are there events you can attend?" },      
       "Simply put, yes! There's a whole world of meet and greets, industry specific events, online events, the list goes on. Theres a ton of places that you as the developer, can place yourself, to be better seen for you, and your work, and to align yourself with selected individuals you know, can help build your network. Let's take a very popluar one, and an event thats almost upon us (at the time of writing this), The Scottish Game Developers Association(SGDA). This events is where you want to be, if you want to foster new relationships, collaborations, have your name spread across the right people. I know I'll be there!",
       "Believe it or not, there are people out there, that love to hear peoples journey's/success stories. Take me for example, almost five years ago, I was a bus driver. No disrespect to bus drivers, but to me, that was a deeply unfulfilling life. So at thirty three years old, I took a gamble, and went back to education. Haven't looked back since! As your network grows, you will come across people that can draw from your story, and help promote you in some sense! it is possible!",
+      "Even with all of this, you can of course reach out by leaving business cards, and CV's with the right people. Providing its short and sweet! Time is money!",
       {
         image: "assets/Blogs/MatrixOperator.jpg",
         caption: "The Operator - The Matrix.",
