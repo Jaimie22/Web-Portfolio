@@ -3,77 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jaimie Neilson - Digital Portfolio</title>
+  <title>Jaimie Neilson | Level Design &amp; Environment Art</title>
+  <meta name="description" content="Portfolio of Jaimie Neilson, level designer and environment artist at JazzGames.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <a href="#top" class="logo">Jaimie Neilson (B01831071) - Digital Portfolio</a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>     
-      <a href="#inspiration">Inspiration</a>
-      <a href="#devlog">Devlog</a>
-      <a href="#blog">Blog</a>
-      <a href="#linkedin">LinkedIn</a>
-    </nav>
-  </header>
 
-  <main id="top">
-    <section class="hero">
-      <h1>Hi, I'm Jaimie.</h1>
-      <p>My journey from bus driver to game developer.</p>
-      <a href="#projects" class="button">See my work</a>
-    </section>
+  <!-- ===== SPLASH SCREEN ===== -->
+  <section id="splash" class="screen splash" aria-label="Welcome">
+    <div class="splash-image"></div>
+    <div class="splash-shade"></div>
 
-    <section id="about" class="section">
-      <h2>About Me</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <p>Hello viewer! I'm Jaimie, an aspiring game developer, aiming to specialise in level design, and a current student at UWS Paisley. My passion for game development started at a young age, and I've been in love with the craft ever since. Welcome to my digital portfolio, where I showcase my projects, share my journey, and connect with fellow enthusiasts. Feel free to explore my work, read my blog posts, and reach out if you'd like to collaborate or discuss game development.</p>
-          <p>Permit me to give you a brief insight into who Jaimie is, and how we got to this point. I won't give too much life story, but in essence I'm a 37-year-old, a dad of 3, a husband, and for the longest time, I drove buses. A job I had no love for at all. At 33, I decided to change my life, and pursue a career in game development, starting with my first two years in college doing software development. A massive gamble all things considered. But I'm happy that I took the risk, and became a mature student again. It has re-awoken the passion for gaming, and the curiosity of the worlds I still play in as a gamer.</p>
-        </div>
-        <div class="about-photo">
-          <img src="images/profile.jpg" alt="Photo of Jaimie"
-               onerror="this.parentElement.classList.add('missing'); this.remove();">
-        </div>
-      </div>
-    </section>
+    <div class="splash-content">
+      <p class="splash-kicker">Digital Portfolio of :</p>
+      <h1 class="splash-title">Jaimie Neilson</h1>
+      <p class="splash-tagline">UWS Student &middot; Aspiring Level designer / Environmental artist</p>
+      <button id="enterButton" class="enter-button">Enter</button>
+    </div>
 
-    <section id="projects" class="section">
-      <h2>Projects</h2>
-      <div id="projectsGrid" class="card-grid"></div>
-    </section>
+    <p class="splash-hint">Enjoy the portfolio</p>
+  </section>
 
-    <section id="inspiration" class="section">
-      <h2>Inspiration</h2>
-      <p class="section-intro">The games, art and spaces that shape how I think about level design and environments.</p>
-      <div id="inspirationFilters" class="filters"></div>
-      <div id="inspirationGrid" class="inspiration-grid"></div>
-    </section>
+  <!-- ===== MAIN MENU ===== -->
+  <nav id="menu" class="screen menu" aria-label="Main menu">
+    <a href="#" class="menu-brand">Jaimie Neilson</a>
 
-    <section id="devlog" class="section">
-      <h2>Devlog</h2>
-      <p class="section-intro">A running log of what I've been building, game by game.</p>
-      <div id="devlogFilters" class="filters"></div>
-      <div id="devlogTimeline" class="devlog-timeline"></div>
-    </section>
+    <a href="#about" class="menu-option"
+       style="--image: url('assets/menu/about.jpg'); --fallback: linear-gradient(160deg, #2b2233, #0b0b10); --delay: 0.1s;">
+      <span class="menu-number">01</span>
+      <span class="menu-label">About</span>
+      <span class="menu-sub">Who I am, and the journey from the bus depot to level design.</span>
+    </a>
 
-    <section id="blog" class="section">
-      <h2>Blog</h2>
-      <div id="blogList" class="blog-list"></div>
-    </section>
+    <a href="#personal-projects" class="menu-option"
+       style="--image: url('assets/menu/personal-projects.jpg'); --fallback: linear-gradient(160deg, #1e2a2b, #0b0b10); --delay: 0.2s;">
+      <span class="menu-number">02</span>
+      <span class="menu-label">Personal Projects</span>
+      <span class="menu-sub">The worlds I'm building at JazzGames.</span>
+    </a>
 
-    <section id="linkedin" class="section linkedin">
-      <h2>Let's Connect</h2>
-      <p>Interested in my work or want to collaborate? Find me on LinkedIn.</p>
-      <a href="https://www.linkedin.com/in/jaimie-neilson-354a2a112/?isSelfProfile=true" target="_blank" rel="noopener" class="button">View my LinkedIn</a>
-    </section>
-  </main>
+    <a href="#educational-work" class="menu-option"
+       style="--image: url('assets/menu/educational-work.jpg'); --fallback: linear-gradient(160deg, #2b2620, #0b0b10); --delay: 0.3s;">
+      <span class="menu-number">03</span>
+      <span class="menu-label">Educational Work</span>
+      <span class="menu-sub">Projects and research from my studies at UWS.</span>
+    </a>
+  </nav>
 
-  <footer>
-    <p>&copy; <span id="year"></span> Jaimie Neilson - Developer Portfolio. All rights reserved.</p>
-  </footer>
+  <!-- ===== COMING SOON PAGE ===== -->
+  <section id="section" class="screen section-screen" aria-live="polite">
+    <button id="backButton" class="back-button">&larr; Back</button>
+    <div class="section-content">
+      <p id="sectionNumber" class="section-number"></p>
+      <h2 id="sectionTitle"></h2>
+      <p id="sectionText" class="section-text"></p>
+    </div>
+  </section>
+
+  <!-- ===== CONTENT PAGES ===== -->
+  <section id="page" class="screen page-screen">
+    <header class="page-bar">
+      <button id="pageBack" class="back-button">&larr; Back</button>
+      <nav id="breadcrumb" class="breadcrumb" aria-label="Breadcrumb"></nav>
+    </header>
+    <main id="pageContent" class="page-content"></main>
+  </section>
 
   <script src="script.js"></script>
 </body>

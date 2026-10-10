@@ -1,272 +1,272 @@
-// =====================================================
-// EDIT YOUR CONTENT HERE
-// =====================================================
 
-// ----- PROJECTS -----
-// image: the card's background picture. Leave as "" for a plain card.
-// link: leave as "" if there's nothing to link to yet.
-const projects = [
-  {
-    title: "R.E.M - A game of Dreams (University project)",
-    status: "In planning",
-    description: "A cube-world puzzle game themed around REM sleep.",
-    image: "assets/REMFrontCover.png",
-    gallery: "R.E.M - A game of Dreams",
-    link: ""
+// ----- PAGES THAT AREN'T BUILT YET -----
+const PLACEHOLDERS = {
+  "about": {
+    number: "01",
+    title: "About",
+    text: "Coming soon."
   },
-  {
-    title: "Awesome Defence Force (University project)",
-    status: "In planning",
-    description: "A 2.5D Turn-based strategy game, that combines all the cliche, and cheese, of a typical 80's soldier action game. AWESOME!",
-    image: "images/awesome-defence-force.jpg",
-    gallery: "Awesome Defence Force",
-    link: ""
-  },
-  {
-    title: "Scaccorum Arcanum (Personal project)",
-    status: "In development",
-    description: "An exciting hybrid of Chess, and TCG.",
-    image: "images/scaccorum-arcanum.jpg",
-    gallery: "Scaccorum Arcanum",
-    link: ""
-  },
-  {
-    title: "Enjoy your stay! (Personal project)",
-    status: "In development",
-    description: "A chilling horror, set in an abandoned hotel. Your haunted hosts? Three sinister porcelain dolls, that think freely!",
-    image: "assets/EYSCover.png",
-    gallery: "Enjoy your stay!",
-    link: ""
-  },
-  {
-    title: "Aetherfall (Personal project)",
-    status: "In development",
-    description: "An all Scottish RPG. Uncover the story of how the Aether comet fell to earth, and the consequences of its arrival.",
-    image: "assets/AetherfallCover.png",
-    gallery: "Aetherfall",
-    link: ""
+  "personal-projects": {
+    number: "02",
+    title: "Personal Projects",
+    text: "Coming soon."
   }
-];
+};
 
-
-// ----- GALLERY -----
-// One entry per game. The first image in each list is used as the cover tile.
-// Put each game's images in its own folder inside images/gallery/.
-
-const galleryGames = [
+// ----- EDUCATIONAL WORK: UNIVERSITY PROJECTS -----
+// cover: the card's background image.
+// module: optional, e.g. "Year 2 · Game Design". Leave "" to hide it.
+// gallery: what opens when the card is clicked, in this order.
+//   Screenshot:  { src: "path", caption: "..." }
+//   YouTube:     { youtube: "VIDEO_ID", caption: "..." }
+//   Video file:  { video: "path.mp4", poster: "path.png", caption: "..." }
+const UNIVERSITY_PROJECTS = [
   {
-    game: "R.E.M - A game of Dreams",
-    images: [
-      { src: "assets/REMFrontCover.png", caption: "R.E.M - A game of Dreams Cover Concept (Not Final)" },
+    title: "R.E.M - A game of Dreams",
+    status: "In planning",
+    module: "",
+    description: "A cube-world puzzle game themed around REM sleep.",
+    cover: "assets/REMFrontCover.png",
+    gallery: [
+      { src: "assets/gallery/rem/01.png", caption: "Screenshot 1" },
       { src: "assets/gallery/rem/02.png", caption: "Screenshot 2" },
-      { src: "assets/gallery/rem/03.png", caption: "Screenshot 3" },
-      { youtube: "VIDEO_ID", caption: "Trailer" }
+      { src: "assets/gallery/rem/03.png", caption: "Screenshot 3" }
     ]
   },
   {
-    game: "Awesome Defence Force",
-    images: [
+    title: "Awesome Defence Force",
+    status: "In planning",
+    module: "",
+    description: "A 2.5D turn-based strategy game that combines all the cliche and cheese of a typical 80's soldier action game. AWESOME!",
+    cover: "images/awesome-defence-force.jpg",
+    gallery: [
       { src: "assets/gallery/awesome-defence-force/01.png", caption: "Screenshot 1" },
       { src: "assets/gallery/awesome-defence-force/02.png", caption: "Screenshot 2" },
-      { src: "assets/gallery/awesome-defence-force/03.png", caption: "Screenshot 3" },
-      { youtube: "VIDEO_ID", caption: "Trailer" }
-    ]
-  },
-  {
-    game: "Scaccorum Arcanum",
-    images: [
-      { src: "assets/gallery/scaccorum-arcanum/01.png", caption: "Screenshot 1" },
-      { src: "assets/gallery/scaccorum-arcanum/02.png", caption: "Screenshot 2" },
-      { src: "assets/gallery/scaccorum-arcanum/03.png", caption: "Screenshot 3" },
-      { youtube: "VIDEO_ID", caption: "Trailer" }
-    ]
-  },
-  {
-    game: "Enjoy your stay!",
-    images: [
-      { src: "assets/EYSCover.png", caption: "Enjoy your stay! Cover Concept (Not Final)" },
-      { src: "assets/gallery/enjoy-your-stay/02.png", caption: "Screenshot 2" },
-      { src: "assets/gallery/enjoy-your-stay/03.png", caption: "Screenshot 3" },
-      { youtube: "VIDEO_ID", caption: "Trailer" }
-    ]
-  },
-  {
-    game: "Aetherfall",
-    images: [
-      { src: "assets/AetherfallCover.png", caption: "Aetherfall Cover Concept (Not Final)" },
-      { src: "assets/gallery/aetherfall/02.png", caption: "Screenshot 2" },
-      { src: "assets/gallery/aetherfall/03.png", caption: "Screenshot 3" },
-      { youtube: "VIDEO_ID", caption: "Trailer" }
+      { src: "assets/gallery/awesome-defence-force/03.png", caption: "Screenshot 3" }
     ]
   }
 ];
 
-// ----- INSPIRATION -----
-// Each item needs ONE of: image, youtube, or video.
-// tags: use any words you like. Filter buttons are created from them automatically.
-// credit + link: always name the artist or game, and link to the original.
-
-const inspirations = [
+// EDUCATIONAL WORK: BLOGS
+// In any text you can use <em>italics</em> and <strong>bold</strong>.
+// sources: listed at the end. Each is { text: "...", link: "..." }.
+const EDUCATIONAL_BLOGS = [
   {
-    title: "Silent Hill Franchise",
-    credit: "Konami Games",
-    tags: ["Lighting", "Atmosphere"],
-    note: "A masterclass in using light and fog to make a place feel heavy, lonely and unsettling.",
-    items: [
-      {
-        image: "assets/Inspiration/SilentHill2Remake.jpg",
-        credit: "VG247",
-        caption: "A gritty, depressing scene",
-        link: "https://www.vg247.com/multiple-silent-hill-projects-are-getting-trailers-really-soon-claims-leaker",        
-        note: "This inspires my passion of level design for many reasons, the first, the mood has most certainly been encapsulated in this shot. You can feel the weight of the world on your shoulders, and yet the feeling of complete aloneness. The second, the masterful use of lighting, is a perfect example of how to use light to create a mood."
-      },
-            {
-        image: "assets/Inspiration/SilentHill2DarkHall.jpg",
-        credit: "konami & Sony",       
-        caption: "A dark, atmospheric hallway",
-        link: "https://blog.playstation.com/2022/10/19/silent-hill-2-remake-revealed-first-gameplay-details-and-design-changes-announced/",
-        note: "Another exquisite example of lighting and atmosphere. This shot captures true horror, and the feeling of being alone in a dark. Capturing the right level design, for Interiors, is equally as importnat to me as the worlds they live in. There has to be a sense of awe, somewhere that the player would be happy to spend a little more time in. Not in this case though!"
-      },
-      {
-        image: "assets/Inspiration/SilentHillTownFall.png",
-        credit: "Jonathan Ducrocq",
-        caption: "A foggy, unsettling street scene",
-        link: "https://nohiro.artstation.com/projects/m8lwJ1",
-        note: "This from Konami's most recent installation to the franchise, Silent Hill Town Fall. I really like the way the lighting is used to create a sense of dread and unease. The fog and the shadows create a sense of mystery and tension, making the player feel like they are in a dangerous and unpredictable environment. To me, this creatres a sense of immersion and engagement, as the player is constantly on edge and unsure of what might be lurking around the next corner.",
-      }
-    ]
-  },
-  {
-    title: "Example collection",
-    credit: "Artist or game name",
-    link: "https://www.artstation.com/",
-    tags: ["Level Flow"],
-    note: "Swap this for your own pick.",
-    items: [
-      { image: "assets/inspiration/example-01.png", caption: "First image", note: "What this teaches you." },
-      { youtube: "VIDEO_ID", caption: "A video", note: "What this shows you about how a space leads the player." }
-    ]
-  }
-];
-
-
-// ----- BLOG -----
-// Date format: "YYYY-MM-DD". Newest posts show first automatically.
-// Each item in body is one paragraph.
-const blogPosts = [
-  {
-    title: "Blog 1 - What makes a good level designer?",
-    date: "2026-09-24",
-    cover: "assets/Blogs/Blog1Image.png",
-    intro: "My first look into what makes a great level designer, utlising some of big names in the industry!.",
+    title: "Blog 1 - Creating a good online presence. Why does it matter?",
+    date: "2026-09-18",
+    cover: "assets/Blogs/JohnCenaCantSeeMe.jpg",
+    intro: "How can they know what they can't see!",
     content: [
-      "<em>A famous game development quote from id Software veteran Jay Wilbur is: “Level design is where the rubber hits the road”.</em> This is a great quote, because it really captures the essence of what level design is all about. It's the part of game development where all the ideas and concepts come together, and the player gets to experience them in a tangible way. It's where the player's skills and abilities are put to the test, and where the game's mechanics are fully realized.",
-      { heading: "The rubber & the Road" },
-      "With the words of the great jay Wilbur in mind, it draws attention to whom he was referring. Cliff Bleszinski, a level designer at id Software, who was responsible for some of the most iconic levels in gaming history. Bleszinski's work on games like Doom and Quake helped to define the first-person shooter genre, and his levels were known for their tight design, clever use of space, and intense action.",
-      "If I use my limited knowledge of level design, I can see how Bleszinski's work exemplifies these principles. For example, in my horror project Enjoy your Stay!, theres use of a door mechanic, whereby the player has to grab hold, and push with a degree of resistence. a simple mechanic to some, but in the eyes of a level designer, this adds gravity, tension, and a sense of unknowning, as openning the door too quick could alert the pursuer, or too slow could mean chances of escape are limited. This now gives creedence to Jay's words. My door mechanic, is the rubber hitting the road!",
+      "A million reasons can spring to mind almost instantly. Having a good online presence could mean the difference between your dream job and a dead end. Between your dream client and a dead end. You can see where im going with this. Making yourself shine online, is about as good as it gets. Everyone uses the big WWW, therefore, everyones watching!",
+      { heading: "A few aspects to consider?" },
+      "Visibility :",
+      "You wanna get the dream job, at the big dev compnay right? How are these people gonna know you, if they cant see you! And/or, see the magnum opus you've spent blood, sweat, and tears, and potentialy years making? Creating a well polished online presence, is a great way to get your work out there, and seen by the right people. You can use social media, and/or a website to showcase your work, and make yourself known.",
+      "Credibility :",
+      "Much in the same fashion as visibility, credibility is a big factor in getting your work seen. If you have a well polished online presence, it shows that you care about your work, and that you're serious about your craft. It also shows that you're willing to put in the time and effort to make yourself look good, and that you're willing to put in the time and effort to make your work look good. All of which we know your potential future boss has to know. If you look good, you'll make them look good, to be as blunt!",
+      "Networking opportunities :",
+      "Having a good online presence can also open up networking opportunities. If you're active on social media, and/or have a website, you can connect with other professionals in your field, and potentially collaborate on projects. You can also use your online presence to connect with potential clients, and/or employers. The more people that see your work, the more opportunities you'll have to network, and potentially get your work seen by the right people.",
+      { heading: "How to Shine! What stands you apart?" },
+      "The best way to stand out, is to be yourself. Be authentic, and be genuine. Don't try to be someone you're not, or try to be something you're not. Be true to yourself, and be true to your work. If you do that, you'll stand out from the crowd, and you'll make a name for yourself.",
+      "On the subject of work?, have a strong portfolio, and make sure it's up to date. Show your best work, and make sure it's easy to navigate. Make sure your portfolio is easy to find, and make sure it's easy to contact you. Employers dont have time to peruse everyones work. Concise, clear, and well focused. This is what you must abide by to stand out.",
+      "At your own leisure, if you wish, My work(as currently limited as it may be!) is available on this website to view. i currently have a few projects in the works now, and Ill be updating my portfolio regularly!",
       {
-        image: "assets/Blogs/Blog1Image.png",
-        caption: "Jacincto, and its creatior",
-        credit: "id Software & Cliff Bleszinski & microsoft",
-        link: ""
+        image: "assets/Blogs/JohnCenaCantSeeMe.jpg",
+        caption: "John Cena's trademark \"you can't see me\" hand gesture.",
+        credit: "WWE - World Wrestling Entertainment",
       },
       {
-        quote: "Thus a good designer has to both dread and seek out other people’s advice.</em> by Jason Rubin",
-        cite: "Andy Gavin’s 2011 blog series ‘Making Crash Bandicoot’."
+        quote: "There is an intelligent way to eat a live frog - Sun Tzu",
+        cite: "https://www.azquotes.com/author/19687-Sun_Tzu"
       },
-      { list: ["Utilise interesting gameplay mechanics", "Help to add feeling to the levels you design"] },
-      "In conlusion, taking notes of what some of the big names in the gaming industry say, I find that the best level designers are those who can balance creativity with functionality, and who are always willing to learn from others."
+      " The quote above, references the principles taught by Sun Tzu. An historic figure in war strategy. In its essence it means, If you know the enemy and know yourself, you need not fear the result of a hundred battles. Know your strengths, know your target, and make yourself visible!",
     ],
     sources: [
       {
-        text: "Bleszinski, C. (2000). <em>The Art and Science of Level Design</em>. Game Developers Conference.",
-        link: "https://web.archive.org/web/20021203193328/http://www.cliffyb.com/rants/art-sci-ld.shtml"
+        text: "Unicus Marketing 2025, The Importance of a Strong Online Presence in Today’s Digital World.",
+        link: "https://www.unicusmarketing.com/post/the-importance-of-a-strong-online-presence-in-todays-digital-world/"
       },
       {
-        text: "The Level Design Book. <em>History of the level designer</em>.",
-        link: "https://book.leveldesignbook.com/culture/history-level-designer"
-      }
+        text: "Roger Blikkberget, CEO Viladomat Group 2024.",
+        link: "https://www.linkedin.com/pulse/building-powerful-online-presence-why-matters-how-achieve-ukvef/"
+      },
     ]
   },
   {
-    title: "Blog 2 - How to add feeling to your levels?",
-    date: "2026-09-30",
-    cover: "assets/Blogs/Blog2Image.png",
-    intro: "What could an aspiring artist do, to give the levels feeling?, personality?.",
+    title: "Blog 2 - Does the concept of professionalism, apply to the Creative industry?",
+    date: "2026-09-25",
+    cover: "assets/Blogs/Professionalism.png",
+    intro: "It really matters! Here's why!",
     content: [
-      "Coming across a blog from I imagine, another aspiring designer, Lena Oduya, She writes and I quote, <em>Great levels don't happen by accident. They're carefully engineered experiences that guide, challenge, and surprise players.</em> This is a great quote, because it really captures the essence of what level design is all about. It's the part of game development where all the ideas and concepts come together, and the player gets to experience them in a tangible way. It's where the player's skills and abilities are put to the test, and where the game's mechanics are fully realized.",
-      { heading: "Feeling Immersed yet?" },
-      "As you may know, there's a plethora of ways in which a designer, of any gravitas, can add feeling to their designs. First and most obivous i'd say, is the environment. Where are they? in a city? in the woods?. Knowing what world you have to create, then brings everything else into focus.",
-      "Now, this may be rather nerdy? but it works I assure you! What i like to do, irrespective of the game, Is find a centralised, hub-like place in the game, and just stand for five minutes. I like to feel by the sounds I hear, or the sights I see. I want to feel Like im the character standing in that world. I recommend giving it a go, the next time you fire up your favourite game!",
-      "From there, of course your choice of narrative, lighting, assets, or paths to take, then becomes more clearer. Giving the player options, would most certainly inspire some creativity on the part of the player. Contray to this, assuming a horror game? Give the player as little means as possible!",
+      "The best way we can look at this, is to imagine four well carved pillars, holding up a roof. The roof is called \"professionalism\", and each of the supporting pillars, have a name, and a meaning. Without any one, or all of these pillars, The roof is sure to collapse, much as you would without these attributes, that will help support you in your development. And they are! : ",
+      { heading: "A few aspects to consider?" },
+      "Commitment :",
+      "Despite any obstacle that may greet you, you still agree to complete the project, and when you say you will. This shows everyone, and even you that with a level head, and a willingness to put in the best possible effort, you can achieve great success, and keep potential employers/clients happy, as they then know you're the person to best trust!",
+      "Integrity :",
+      "With a strong sense of Intgrity, you will be able to make the right decisions, and do the right thing, even when no one is watching. This is a very important aspect of professionalism, as it shows that you can be trusted to do the right thing. It also shows that you have a strong moral compass, and that you are willing to stand up for what you believe in.",
+      "Responsibility :",
+      "Taking responsibility for your actions is a key component of professionalism. It means that you are committed to doing what is right, and that you are willing to face the consequences of your decisions. This shows that you are reliable and trustworthy, and that you are committed to excellence in your work.",
+      "Accountability :",
+      "Being accountable means that you take responsibility for your actions, and that you are willing to admit when you are wrong. This is a very important aspect of professionalism, as it shows that you are willing to learn from your mistakes, and that you are willing to take the necessary steps to correct them.",
+      "And there it is! the four pillars of professionalism. Living religiously by these principles throughout your career, will help you to achieve great success, and will help you to build a strong reputation in the industry. It will also help you to build strong relationships with your colleagues, and will help you to build a strong network of contacts. All of which are very important in the creative industry, as it is a very competitive field, and having a strong reputation, and a strong network of contacts, can be the difference between success and failure.",
       {
-        image: "assets/Blogs/Blog2Image.png",
-        caption: "Feeling pure Immersion",
-        credit: "Easemate US Ai image generator",
-        link: "https://www.easemate.ai/?index="
+        image: "assets/Blogs/Professionalism.png",
+        caption: "The 4 pillars of professionalism, as defined by the Creative Professionals Association.",
+        credit: "AI generated image.",
       },
       {
-        quote: "<em>To be a great designer, you need to look a little deeper into how people think, and act</em> - Paul Boag",
-        cite: "<em>ux design quotes to inspire and motivate you</em>"
+        quote: "The general who wins the battle, makes many calculations in his temple, before the battle is fought. - Sun Tzu",
+        cite: "https://www.azquotes.com/author/19687-Sun_Tzu"
       },
-      { list: ["Understand what the player expects", "Add a delicate flow, to keep the player engaged"] },
-      "In conlusion, A world can only come to life, if you pour yourself into it. A great story can help give a feeling to the levels, but the sights, the sounds, these in my opinion are more tangible, and give whatever I create the meaning i'm looking for in my projects."
+      " The quote above, references the principles taught by Sun Tzu. An historic figure in war strategy. In its essence it means, If you plan wisely, remain unfalterd, and have a strong willingness to succeed, you will!",
     ],
     sources: [
       {
-        text: "Tripo3D. (2023). <em>Level Design: The Art of Crafting Engaging Game Worlds</em>. Tripo3D Blog.",
-        link: "https://www.tripo3d.ai/blog/level-design"
+        text: "David @ dev.to 2025, Does the concept of professionalism apply to the creative industries?",
+        link: "https://dev.to/fedavid/does-the-concept-of-professionalism-apply-to-the-creative-industries-7k6"
       },
       {
-        text: "Lena Oduya - <em>Level Design Principles: How to Build Game Levels That Players Remember</em>",
-        link: "hhttps://gamedesignpath.com/blog/level-design-principles-how-to-build-great-game-levels"
+        text: "Roger Blikkberget, CEO Viladomat Group 2024.",
+        link: "https://www.linkedin.com/pulse/building-powerful-online-presence-why-matters-how-achieve-ukvef/"
       },
-      {
-        text: "Kristina Guzikova - 100 ux design quotes to inspire and motivate you",
-        link: "https://www.intechnic.com/blog/100-ux-design-quotes-to-inspire-and-motivate-you/"
-      }
     ]
   },
   {
-    title: "Blog 3 - Can your levels tell the story?",
+    title: "Blog 3 - Is freelancing a garunteed road to success?",
     date: "2026-10-02",
-    cover: "assets/Blogs/Blog3Image.png",
-    intro: "With level design, can it tell the story, over and above the narrative?.",
+    cover: "assets/Blogs/FreeLancer.png",
+    intro: "Is life at the top of the tree your ambition?",
     content: [
-      "Not everyone would natutrally think to themselves <em>This level is really telling the story!</em>, but in actiual fact, it can. And sometimes, even more so than the narrative. A great example of this, is the game <em>Silent Hill 2</em>, where the level design, and the environment, tells the story of the characters, and their inner turmoil. The use of lighting, and the placement of objects, can tell a story without a single word being spoken.",
-      "Silent hill being one example, but of course there are many more in the world, that can do this too. When designing a level, or at least a memorable one, simply put, you must consider the following aspects: The environment. Where is the player? The lighting. Bright and beautiful?, or dark and dingy?, the audio. Can you stand on a mountain and almost feel the wind brushing past you? These arejust some of the things that can be used to tell a story through the level, and to create a sense of immersion for the player.",
-      { heading: "Has the level told the story?" },
-      "A source I have cited below, states,<em>Your job is to make it as hard as possible for the player to finish your game without understanding your story.</em>. I think Personally, that's a vewry intersting way to broach such a subject. A level design is made up of a multitude of elements, and with this in mind, one of which that comes to mind, is pacing. The pacing of a level can be used to tell a story, and to create a sense of tension, or relief. A well-paced level can make the player feel like they are on a journey, and that they are experiencing the story as it unfolds.",
-      "Now as I'm sure i've mentioned in a previous blog, the world itself to me, tells the story better than anything! If you enter a world likened to Bethesda's Skyrim for example, you get the feeling of sparce, cold, and desolate. this to me tells the story of a world that is harsh, and unforgiving. The player is immediately immersed in the world, and they can feel the weight of the story on their shoulders. The level design, and the environment, tells the story of the world, and the characters that inhabit it.",
+      "Im pretty sure at one point or another, we've all thought about being our own bosses, Being the man! in a manner of speaking. While thats great, it's not everyone that actually thinks of every step, and what it actually takes to become a successful freelancer.",
+      { heading: "The current Industry condition" },
+      "According to big names such as, PCGamer, and Game Developer, the gaming industry is a very competitive field, and it's not for everyone. The industry is constantly changing, and it's not always easy to keep up with the latest trends. It's also not always easy to find work, and it's not always easy to make a living. It's a very competitive field, and it's not for everyone.",
+      "As an example, were you aware that, according to the GDC 2026 State of the Game Industry report, one in four developers have been laid off over the past two years? So talking numbers? thats around 28% globally, with 17% of that this year alone! A genuinely shocking statistic, when you realise, this is the industry you're fighting to get into!. Now let me be frank, I am by no means boycotting, nore downplaying the gaming industry in any way. By the gods, Im trying to get a job in it myself!.",
+      "So yes, you may have seen it yourself, a massive rise in smaller groups of devs, or parties of one, becoming the developer, the boss, the accountant, and so on. According to TIGA's findings in 2024, the number of those \"going solo\" as it were, have tripled from 3,600, or 12.7.% as a result. And that number continues to grow",
+      "If I was to give my honest opinion, I would have to say it's genuinely a time of great unknown, yet, of great opportunity as well. Personally speaking, I'm on nobody's radar right now, I have a few projects I know I can work on and perfect, and hopefully, by the time I finish these projects, Ill have something substantial to show a potential employer, or client. ",
+      { heading: "What does it mean to Freelance?" },
+      "Well, to put it simply, it means you are your own boss. You are responsible for finding your own work, and for managing your own time. You are also responsible for managing your own finances, and for paying your own taxes. It's a lot of work, and it's not for everyone. But if you have the drive, the determination, and the skills, it can be a very rewarding career path.",
+      "How would one establish a buisness you may ask? Well, you would need to register your buisness with the appropriate government agency, and you would need to obtain any necessary licenses or permits. You would also need to set up a business bank account, and you would need to keep track of your income and expenses. You would also need to file your taxes, and you would need to pay any applicable taxes.",
+      "Just a quick note?, If you havent dones so already? Read my Blog 2, on the 4 pillars of professionalism. It will help you to understand what it takes to be a successful freelancer, and it will help you to understand what it takes to be a successful professional in any field.",
       {
-        image: "assets/Blogs/Blog3Image.png",
-        caption: "Telling a book style story through level design",
-        credit: "Easemate US Ai image generator",
-        link: "https://www.easemate.ai/?index="
+        image: "assets/Blogs/FreeLancer.png",
+        caption: "The 4 pillars of professionalism, as defined by the Creative Professionals Association.",
+        credit: "AI generated image.",
       },
       {
-        quote: "<em>Every level is a chance to find a better version of yourself.</em>– Marin Cole",
-        cite: "<em>lifesuccessjournal.com/gaming-quotes</em>"
+        quote: "Plans are to be changed according to circumstances. - Sun Tzu",
+        cite: "https://www.azquotes.com/author/19687-Sun_Tzu"
       },
-      { list: ["Understand what the player expects", "Give enough of a challenge, even if it's a small one"] },
-      "In conlusion, and in my own thoughts, I would agree that a  world has to be just complex enough, that it gives the player the chance to take a step back to examine it. And this is where you could invoke the majesty of large open world spaces, or set the tone in a dark horror scene.."
+      " The quote above, references the principles taught by Sun Tzu. An historic figure in war strategy. In its essence it means, as a freelancer, not everything will run smoothly all the time. By knowing yourself, and fully accpepting adaptability when most needed, you will be in a much greater stead to succeed!",
     ],
     sources: [
       {
-        text: "The level design book. <em>Why tell a story with level design?</em>.",
-        link: "https://book.leveldesignbook.com/process/env-art/storytelling"
+        text: "Game Developer (2026). <em>Survey: One in four developers laid off over the past two years</em>. Reporting the GDC 2026 State of the Game Industry report.",
+        link: "https://www.gamedeveloper.com/business/survey-one-in-four-developers-laid-off-over-the-past-two-years"
       },
       {
-        text: "Emily Short, 2016 - <em>Plot shaped level design - Interactive Storytelling.</em>",
-        link: "https://emshort.blog/2016/05/18/plot-shaped-level-design/"
+        text: "PC Gamer (2025). <em>More than 19,000 games launched on Steam this year, but almost half have fewer than 10 reviews</em>. Using SteamDB data.",
+        link: "https://www.pcgamer.com/gaming-industry/more-than-19-000-games-launched-on-steam-this-year-but-almost-half-have-fewer-than-10-reviews/"
+      },
+      {
+        text: "Esports Legal News (2026). <em>The Industry at a Breaking Point: Key Takeaways from the GDC 2026 State of the Game Industry Report</em>.",
+        link: "https://esportslegal.news/2026/02/06/gdc-state-of-the-game-industry-report/"
+      },
+      {
+        text: "TIGA (2024). <em>Weathering the storm: TIGA research reveals UK games dev sector continues to grow, despite global sector downturn</em>. Findings from <em>Making Games in the UK 2024</em>.",
+        link: "https://tiga.org/news/weathering-the-storm-tiga-research-reveals-uk-games-dev-sector-continues-to-grow-despite-global-sector-downturn"
       },
     ]
+  },
+  {
+    title: "Blog 4 - Are you connected? a Guide on networking In the Creative Industry",
+    date: "2026-10-09",
+    cover: "assets/Blogs/MatrixOperator.jpg",
+    intro: "Get your in roads into the Industry. Here's how?",
+    content: [  
+      "Within the gaming indusrty, or indeed any industry, having a strong network of people you can depend on, arguably, can bolster your chances of success, even more so over and above just the work that you do. What do I mean by this? Well, for example, you want to apply for a specific role. Perhaps someone in your network, may know of an opportunity upcoming, either within thier company, or else where. That would be considered highly advantageous to you, because you have someone in your network, that has given you this information.",   
+      { heading: "Why networking is absoluetly vital to you?" },
+      "As aforementioned being \"well connected\" as it were, can be highly advantageous for a plethora of reasons, including insider information. There is also the aspect of collaboration. You may get the opportuinty to work on a project, that you might consider \"the best thing you've done\", and it's something that can be added to your repertiore. There can also be many opportunities for mentorship and support, helping you or someone you know, further their careers happily. Knowing someone that you can turn to quite readily, for the key piece of information you need, game changing!",
+      "For a little context on why networking is critical to you, a study was conducted by Lnkedin, a highly reputable social media platform. Their study highlighted that, of a sample of 5 million job applications, those with a 7x higher success rate, were found to be owned by those of whom, have a connection in some form, to a person or group, they have specifically targeted in their chosen fields, as opposed to someone without. Again the saying \"It's who you know!\"",
+      { heading: "Who do you need to know?" },
+      "State the obvious, you don't need to know everyone, to have a strong network. Having a key selection of people, that you know you can utilise, as and when, is the objective. So, who do you need to know? Well this depends! If you lean more into the software enginerring side of game development, having a good core of like minded engineers would be advantageous to you, as they can of course support, share code, develop a piece you know you may not be able to, and so on. Or if you lean more to the creative, having a selection of artists, varying in all disciplines, could be there do to exactly the same thing, support, share, collaborate.", 
+      { heading: "Are there events you can attend?" },      
+      "Simply put, yes! There's a whole world of meet and greets, industry specific events, online events, the list goes on. Theres a ton of places that you as the developer, can place yourself, to be better seen for you, and your work, and to align yourself with selected individuals you know, can help build your network. Let's take a very popluar one, and an event thats almost upon us (at the time of writing this), The Scottish Game Developers Association(SGDA). This events is where you want to be, if you want to foster new relationships, collaborations, have your name spread across the right people. I know I'll be there!",
+      "Believe it or not, there are people out there, that love to hear peoples journey's/success stories. Take me for example, almost five years ago, I was a bus driver. No disrespect to bus drivers, but to me, that was a deeply unfulfilling life. So at thirty three years old, I took a gamble, and went back to education. Haven't looked back since! As your network grows, you will come across people that can draw from your story, and help promote you in some sense! it is possible!",
+      {
+        image: "assets/Blogs/MatrixOperator.jpg",
+        caption: "The Operator - The Matrix.",
+        credit: "Warner Bros. & Desktop Backgrounds",
+      },
+      {
+        quote: "Position youself, where the battle is already won. - Sun Tzu",
+        cite: "https://burningforsuccess.com/sun-tzu-quotes/"
+      },
+      " The quote above, references the principles taught by Sun Tzu. An historic figure in war strategy. In its essence it means, you may have a much easier time of fighting your way through the challenges of the Gaming Industry, If you rely on more than what you know. Perhaps who you know?",
+
+    ],
+    sources: 
+    [
+      {
+        text: "Batchelder, C. (2026). <em>LinkedIn Research Reveals a Hiring Blind Spot That Shuts Out Gen Z</em>. Inc.",
+        link: "https://www.inc.com/colleen-batchelder/linkedin-research-reveals-a-hiring-blind-spot-that-shuts-out-gen-z/91417424"
+      },
+      {
+        text: "The Level Design Book. <em>Communities</em>.",
+        link: "https://book.leveldesignbook.com/appendix/communities"
+      },
+      {
+        text: "Scottish Game Developers Association. <em>Events</em>.",
+        link: "https://sgda.co.uk/events"
+      },
+      {
+        text: "Scottish Games Network (2026). <em>Games Talks Live Returns to Edinburgh, Dundee and Glasgow this March</em>.",
+        link: "https://scottishgames.net/2026/02/27/games-talks-live-returns-to-edinburgh-dundee-glasgow-march-2026/"
+      },
+      {
+        text: "Scottish Games Network (2026). <em>Glasgow Indie Games Fest 2026: Tickets and Call for Speakers Now Open</em>.",
+        link: "https://scottishgames.net/2026/03/27/glasgow-indie-games-fest-announces-2026/"
+      },
+      {
+        text: "Grads in Games (2021). <em>What we're doing for 2021/22</em>.",
+        link: "https://gradsingames.com/news/what-were-doing-for-2021-22/"
+      },
+      {
+        text: "Grads in Games. <em>Games dev portfolio advice</em>.",
+        link: "https://gradsingames.com/services/students/games-industry-portfolio-advice/"
+      }
+    ]   
   }
 ];
 
 
+const $ = id => document.getElementById(id);
 
-// ----- HELPERS -----
+const screens = {
+  splash: $("splash"),
+  menu: $("menu"),
+  section: $("section"),
+  page: $("page")
+};
+
+let pageParent = "menu";
+
+//These functions are used to escape HTML, create slugs, format dates, and count items for display.
+//They are used throughout the code to ensure that the content is displayed correctly and safely.
+//A slug is a URL-friendly version of a string, typically used for creating readable and SEO-friendly URLs. 
+function escapeHTML(text) {
+  return String(text ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  }[char]));
+}
+
+function slugify(text) {
+  return String(text).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+function formatDate(dateString) {
+  const date = new Date(dateString + "T00:00:00");
+  return date.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+}
+
 function isVideoItem(item) {
   return Boolean(item.youtube || item.video);
 }
@@ -286,147 +286,292 @@ function countLabel(items) {
   return parts.join(" · ");
 }
 
-// ----- PROJECTS -----
-function renderProjects() {
-  const grid = document.getElementById("projectsGrid");
-  grid.innerHTML = projects.map(project => {
-    const galleryIndex = galleryGames.findIndex(game => game.game === project.gallery);
-    const clickable = galleryIndex !== -1;
+// ----- SCREENS -----
+function showScreen(name) {
+  Object.entries(screens).forEach(([key, element]) => {
+    const active = key === name;
+    element.classList.toggle("is-active", active);
+    element.setAttribute("aria-hidden", String(!active));
+  });
+}
 
-    const classes = ["card"];
-    if (project.image) classes.push("has-image");
-    if (clickable) classes.push("clickable");
+// Fills the content page and shows it.
+// crumbs: [{ label, path }], the last one is the current page.
+function showPage({ html, crumbs, parent }) {
+  pageParent = parent;
 
-    return `
-      <article class="${classes.join(" ")}"
-               ${project.image ? `style="--card-image: url('${project.image}')"` : ""}
-               ${clickable ? `data-gallery="${galleryIndex}" tabindex="0" role="button" aria-label="View gallery for ${project.gallery}"` : ""}>
-        <span class="tag">${project.status}</span>
-        <h3>${project.title}</h3>
-        <p>${project.description}</p>
-        ${project.link ? `<a href="${project.link}" target="_blank" rel="noopener">Learn more &rarr;</a>` : ""}
-      </article>
-    `;
+  $("breadcrumb").innerHTML = crumbs.map((crumb, i) => {
+    const isLast = i === crumbs.length - 1;
+    const item = isLast
+      ? `<span aria-current="page">${escapeHTML(crumb.label)}</span>`
+      : `<a href="#${crumb.path}">${escapeHTML(crumb.label)}</a>`;
+    return i ? `<span class="sep">/</span>${item}` : item;
   }).join("");
 
-  grid.querySelectorAll(".card.clickable").forEach(card => {
-    const open = () => openViewer(Number(card.dataset.gallery));
+  $("pageContent").innerHTML = html;
+  screens.page.scrollTop = 0;
+  showScreen("page");
+}
 
-    card.addEventListener("click", event => {
-      if (event.target.closest("a")) return;
-      open();
-    });
+// Educational work breadcrumbs, used on all educational pages.
+// The last crumb is the current page, so it has no path.
+const MENU_CRUMB = { label: "Menu", path: "menu" };
+const EDU_CRUMB = { label: "Educational Work", path: "educational-work" };
+const PROJECTS_CRUMB = { label: "University Projects", path: "educational-work/university-projects" };
+const BLOGS_CRUMB = { label: "Educational Blogs", path: "educational-work/blogs" };
 
-    card.addEventListener("keydown", event => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        open();
-      }
-    });
+// Renders the hub page for educational work, with links to university projects and blogs.
+// Each link is a card with a background image, number, title and subtitle.
+function renderEducationalHub() {
+  showPage({
+    parent: "menu",
+    crumbs: [MENU_CRUMB, EDU_CRUMB],
+    html: `
+      <header class="page-header">
+        <p class="page-kicker">03</p>
+        <h1 class="page-title">Educational Work</h1>
+        <p class="page-intro">The games I've built and the research I've written as part of my studies at UWS Paisley.</p>
+      </header>
+
+      <div class="hub">
+        <a href="#educational-work/university-projects" class="menu-option"
+           style="--image: url('assets/menu/university-projects.jpg'); --fallback: linear-gradient(160deg, #1f2433, #0b0b10); --delay: 0.15s;">
+          <span class="menu-number">03.1</span>
+          <span class="menu-label">University Projects</span>
+          <span class="menu-sub">Games and coursework from my degree.</span>
+        </a>
+
+        <a href="#educational-work/blogs" class="menu-option"
+           style="--image: url('assets/Blogs/BlogFrontCover.jpg'); --fallback: linear-gradient(160deg, #2e2026, #0b0b10); --delay: 0.25s;">
+          <span class="menu-number">03.2</span>
+          <span class="menu-label">Educational Blogs</span>
+          <span class="menu-sub">My research and writing on level design and environment art.</span>
+        </a>
+      </div>
+    `
   });
 }
 
-// ----- INSPIRATION -----
-let activeFilter = "All";
-let filterTimer = null;
-
-function inspirationItems(insp) {
-  return (insp.items || []).map(item => ({
-    src: item.image,
-    youtube: item.youtube,
-    video: item.video,
-    poster: item.poster,
-    caption: item.caption || insp.title,
-    note: item.note || "",
-    credit: item.credit || insp.credit || "",
-    link: item.link || insp.link || ""
-  }));
-}
-
-function matchesFilter(insp) {
-  return activeFilter === "All" || (insp.tags || []).includes(activeFilter);
-}
-
-function renderInspirationFilters() {
-  const container = document.getElementById("inspirationFilters");
-  if (!container) return;
-
-  const tags = ["All", ...new Set(inspirations.flatMap(insp => insp.tags || []))];
-  container.innerHTML = tags.map(tag => `
-    <button class="filter-button ${tag === activeFilter ? "active" : ""}" data-tag="${tag}">${tag}</button>
-  `).join("");
-
-  container.querySelectorAll(".filter-button").forEach(button => {
-    button.addEventListener("click", () => applyFilter(button.dataset.tag));
-  });
-}
-
-function renderInspiration() {
-  const grid = document.getElementById("inspirationGrid");
-  if (!grid) return;
-
-  grid.innerHTML = inspirations.map((insp, i) => {
-    const items = inspirationItems(insp);
-    const coverItem = items.find(item => thumbFor(item));
-    const cover = coverItem ? thumbFor(coverItem) : "";
-    const summary = insp.note || (items[0] && items[0].note) || "";
-
-    const mediaClasses = ["inspiration-media"];
-    if (coverItem && isVideoItem(coverItem)) mediaClasses.push("is-video");
-    if (!cover) mediaClasses.push("missing");
+// Renders the list of university projects, newest first.
+// Each project is a card with a cover image, title, status, module and description.
+function renderUniversityProjects() {
+  const cards = UNIVERSITY_PROJECTS.map((project, i) => {
+    const gallery = Array.isArray(project.gallery) ? project.gallery : [];
+    const hasGallery = gallery.length > 0;
+    const style = project.cover ? `style="--image: url('${escapeHTML(project.cover)}')"` : "";
 
     return `
-      <article class="inspiration-item" data-index="${i}" ${matchesFilter(insp) ? "" : "hidden"}>
-        <button class="${mediaClasses.join(" ")}" aria-label="Open ${insp.title}">
-          ${cover ? `<img src="${cover}" alt="${insp.title}" loading="lazy"
-               onerror="this.parentElement.classList.add('missing'); this.remove();">` : ""}
-          ${items.length ? `<span class="inspiration-count">${countLabel(items)}</span>` : ""}
-        </button>
-        <div class="inspiration-body">
-          <div class="inspiration-tags">
-            ${(insp.tags || []).map(tag => `<span class="tag">${tag}</span>`).join("")}
-          </div>
-          <h3>${insp.title}</h3>
-          ${insp.credit ? `<p class="inspiration-credit">${insp.link
-            ? `<a href="${insp.link}" target="_blank" rel="noopener">${insp.credit} &#8599;</a>`
-            : insp.credit}</p>` : ""}
-          ${summary ? `<p class="inspiration-note">${summary}</p>` : ""}
+      <button class="project-card ${hasGallery ? "" : "no-gallery"}" data-index="${i}" ${style}
+              ${hasGallery ? `aria-label="View gallery for ${escapeHTML(project.title)}"` : "disabled"}>
+        <div class="project-meta">
+          ${project.status ? `<span class="tag">${escapeHTML(project.status)}</span>` : ""}
+          ${project.module ? `<span class="tag subtle">${escapeHTML(project.module)}</span>` : ""}
         </div>
-      </article>
+        <h3>${escapeHTML(project.title)}</h3>
+        ${project.description ? `<p>${escapeHTML(project.description)}</p>` : ""}
+        ${hasGallery ? `<span class="project-cta">View gallery &middot; ${countLabel(gallery)}</span>` : ""}
+      </button>
     `;
   }).join("");
 
-  grid.querySelectorAll(".inspiration-item").forEach(tile => {
-    tile.querySelector(".inspiration-media").addEventListener("click", () => {
-      const insp = inspirations[Number(tile.dataset.index)];
-      openCollection(insp.title, inspirationItems(insp), 0);
+  showPage({
+    parent: "educational-work",
+    crumbs: [MENU_CRUMB, EDU_CRUMB, PROJECTS_CRUMB],
+    html: `
+      <header class="page-header">
+        <p class="page-kicker">03.1</p>
+        <h1 class="page-title">University Projects</h1>
+        <p class="page-intro">Games and coursework from my degree. Select a project to see its gallery.</p>
+      </header>
+      ${cards
+        ? `<div class="project-grid">${cards}</div>`
+        : `<p class="empty-note">Projects coming soon.</p>`}
+    `
+  });
+
+  $("pageContent").querySelectorAll(".project-card:not(.no-gallery)").forEach(card => {
+    card.addEventListener("click", () => {
+      const project = UNIVERSITY_PROJECTS[Number(card.dataset.index)];
+      openCollection(project.title, project.gallery, 0);
     });
   });
 }
 
-function applyFilter(tag) {
-  if (tag === activeFilter) return;
-  activeFilter = tag;
-
-  document.querySelectorAll(".filter-button").forEach(button => {
-    button.classList.toggle("active", button.dataset.tag === tag);
-  });
-
-  const grid = document.getElementById("inspirationGrid");
-  grid.classList.add("fading");
-
-  clearTimeout(filterTimer);
-  filterTimer = setTimeout(() => {
-    grid.querySelectorAll(".inspiration-item").forEach(tile => {
-      tile.hidden = !matchesFilter(inspirations[Number(tile.dataset.index)]);
-    });
-    grid.classList.remove("fading");
-  }, 180);
+// ----- BLOGS -----
+function postContent(post) {
+  return post.content || post.body || [];
 }
 
-// ----- VIEWER -----
-let currentItems = [];
-let currentIndex = 0;
+// Estimates reading time in minutes, based on 200 words per minute.
+// Returns at least 1 minute, even for very short posts.
+function readingTime(post) {
+  const text = postContent(post).map(block => {
+    if (typeof block === "string") return block;
+    if (block.list) return block.list.join(" ");
+    return block.heading || block.subheading || block.quote || block.caption || "";
+  }).join(" ");
+  const words = text.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
+}  
+
+// Sorts posts by date, newest first.
+// Returns a new array, does not modify the original.
+function sortedPosts(posts) {
+  return [...posts].sort((a, b) => String(b.date).localeCompare(String(a.date)));
+}
+
+// Renders the list of blog posts, newest first.
+// Each post is a card with a cover image, title, date, reading time and intro.
+function renderBlogList() {
+  const cards = sortedPosts(EDUCATIONAL_BLOGS).map(post => {
+    const firstBlock = postContent(post)[0];
+    const intro = post.intro || (typeof firstBlock === "string" ? firstBlock : "");
+
+    return `
+      <a class="blog-card" href="#educational-work/blogs/${slugify(post.title)}">
+        <div class="blog-cover">
+          ${post.cover ? `<img src="${escapeHTML(post.cover)}" alt="" loading="lazy" onerror="this.remove();">` : ""}
+        </div>
+        <div class="blog-card-body">
+          <p class="blog-meta">${formatDate(post.date)} &middot; ${readingTime(post)} min read</p>
+          <h3>${post.title}</h3>
+          ${intro ? `<p class="blog-intro">${intro}</p>` : ""}
+          <span class="blog-read">Read post &rarr;</span>
+        </div>
+      </a>
+    `;
+  }).join("");
+
+  showPage({
+    parent: "educational-work",
+    crumbs: [MENU_CRUMB, EDU_CRUMB, BLOGS_CRUMB],
+    html: `
+      <header class="page-header">
+        <p class="page-kicker">03.2</p>
+        <h1 class="page-title">Educational Blogs</h1>
+        <p class="page-intro">Research and writing on level design and environment art, with sources for everything I reference.</p>
+      </header>
+      ${cards
+        ? `<div class="blog-grid">${cards}</div>`
+        : `<p class="empty-note">Posts coming soon.</p>`}
+    `
+  });
+}
+
+// Renders a single block of content for a blog post.
+// Returns the HTML for that block.
+function renderBlock(block) {
+  if (typeof block === "string") return `<p>${block}</p>`;
+
+  if (block.heading) return `<h2>${block.heading}</h2>`;
+  if (block.subheading) return `<h3>${block.subheading}</h3>`;
+
+  if (block.image) {
+    const credit = block.credit
+      ? `<span class="article-credit">${block.link
+          ? `<a href="${escapeHTML(block.link)}" target="_blank" rel="noopener">${block.credit} &#8599;</a>`
+          : block.credit}</span>`
+      : "";
+    return `
+      <figure class="article-figure">
+        <img src="${escapeHTML(block.image)}" alt="${escapeHTML(block.caption || "")}" loading="lazy"
+             onerror="this.parentElement.classList.add('missing'); this.remove();">
+        ${block.caption || credit ? `<figcaption>${block.caption || ""}${credit}</figcaption>` : ""}
+      </figure>
+    `;
+  }
+
+  if (block.youtube) {
+    return `
+      <figure class="article-figure">
+        <div class="article-video">
+          <iframe src="https://www.youtube-nocookie.com/embed/${escapeHTML(block.youtube)}"
+                  title="${escapeHTML(block.caption || "Video")}"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+        </div>
+        ${block.caption ? `<figcaption>${block.caption}</figcaption>` : ""}
+      </figure>
+    `;
+  }
+
+  if (block.quote) {
+    return `
+      <blockquote>
+        <p>${block.quote}</p>
+        ${block.cite ? `<cite>&mdash; ${block.cite}</cite>` : ""}
+      </blockquote>
+    `;
+  }
+
+  if (block.list) {
+    return `<ul>${block.list.map(item => `<li>${item}</li>`).join("")}</ul>`;
+  }
+
+  return "";
+}
+
+function renderBlogPost(slug) {
+  const post = EDUCATIONAL_BLOGS.find(p => slugify(p.title) === slug);
+
+  if (!post) {
+    showPage({
+      parent: "educational-work/blogs",
+      crumbs: [MENU_CRUMB, EDU_CRUMB, BLOGS_CRUMB],
+      html: `
+        <header class="page-header">
+          <h1 class="page-title">Post not found</h1>
+          <p class="page-intro">That post may have been renamed or removed.</p>
+        </header>
+        <a class="article-back" href="#educational-work/blogs">&larr; All posts</a>
+      `
+    });
+    return;
+  }
+
+  const sources = post.sources || [];
+
+  showPage({
+    parent: "educational-work/blogs",
+    crumbs: [MENU_CRUMB, EDU_CRUMB, BLOGS_CRUMB, { label: post.title, path: "" }],
+    html: `
+      <article class="article">
+        ${post.cover ? `
+          <div class="article-cover">
+            <img src="${escapeHTML(post.cover)}" alt="" onerror="this.parentElement.remove();">
+          </div>` : ""}
+        <p class="article-meta">${formatDate(post.date)} &middot; ${readingTime(post)} min read</p>
+        <h1 class="article-title">${post.title}</h1>
+        ${post.intro ? `<p class="article-intro">${post.intro}</p>` : ""}
+
+        <div class="article-body">
+          ${postContent(post).map(renderBlock).join("")}
+        </div>
+
+        ${sources.length ? `
+          <section class="article-sources">
+            <h2>Sources</h2>
+            <ol>
+              ${sources.map(source => {
+                const text = typeof source === "string" ? source : source.text;
+                const link = typeof source === "string" ? "" : source.link;
+                return `<li>${text}${link
+                  ? ` <a href="${escapeHTML(link)}" target="_blank" rel="noopener">${escapeHTML(link)} &#8599;</a>`
+                  : ""}</li>`;
+              }).join("")}
+            </ol>
+          </section>` : ""}
+
+        <a class="article-back" href="#educational-work/blogs">&larr; All posts</a>
+      </article>
+    `
+  });
+}
+
+// This section is for the viewer, which shows images and videos in a modal overlay.
+// It can be opened from any screen, and the back button closes it.
+let viewerItems = [];
+let viewerIndex = 0;
 let imageSwapToken = 0;
 const IMAGE_FADE_MS = 150;
 
@@ -437,7 +582,7 @@ function buildViewer() {
   viewer.hidden = true;
   viewer.innerHTML = `
     <div class="viewer-backdrop"></div>
-    <div class="viewer-panel">
+    <div class="viewer-panel" role="dialog" aria-modal="true" aria-labelledby="viewerTitle">
       <div class="viewer-header">
         <h3 id="viewerTitle"></h3>
         <button class="viewer-close" aria-label="Close">&times;</button>
@@ -461,12 +606,12 @@ function buildViewer() {
 
   viewer.querySelector(".viewer-backdrop").addEventListener("click", closeViewer);
   viewer.querySelector(".viewer-close").addEventListener("click", closeViewer);
-  viewer.querySelector(".viewer-prev").addEventListener("click", () => showItem(currentIndex - 1));
-  viewer.querySelector(".viewer-next").addEventListener("click", () => showItem(currentIndex + 1));
+  viewer.querySelector(".viewer-prev").addEventListener("click", () => showItem(viewerIndex - 1));
+  viewer.querySelector(".viewer-next").addEventListener("click", () => showItem(viewerIndex + 1));
 
-  const stage = document.getElementById("viewerStage");
-  const image = document.getElementById("viewerImage");
-  const video = document.getElementById("viewerVideo");
+  const stage = $("viewerStage");
+  const image = $("viewerImage");
+  const video = $("viewerVideo");
 
   image.addEventListener("load", () => {
     image.classList.remove("loading");
@@ -491,18 +636,32 @@ function buildViewer() {
 
   document.addEventListener("keydown", event => {
     if (viewer.hidden) return;
-    if (event.key === "Escape") closeViewer();
-    if (event.key === "ArrowLeft") showItem(currentIndex - 1);
-    if (event.key === "ArrowRight") showItem(currentIndex + 1);
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeViewer();
+    }
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      showItem(viewerIndex - 1);
+    }
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      showItem(viewerIndex + 1);
+    }
   });
+}
+
+function viewerIsOpen() {
+  const viewer = $("viewer");
+  return Boolean(viewer && !viewer.hidden);
 }
 
 // Shows only the player that's needed and hides the others.
 function showOnlyMedia(kind) {
   const media = {
-    image: document.getElementById("viewerImage"),
-    video: document.getElementById("viewerVideo"),
-    youtube: document.getElementById("viewerYoutube")
+    image: $("viewerImage"),
+    video: $("viewerVideo"),
+    youtube: $("viewerYoutube")
   };
   Object.entries(media).forEach(([name, element]) => {
     element.style.display = name === kind ? "block" : "none";
@@ -516,7 +675,7 @@ function showOnlyMedia(kind) {
 // Fade the current image out while the next one preloads,
 // then swap and fade in once both are finished.
 function swapImage(src, alt) {
-  const image = document.getElementById("viewerImage");
+  const image = $("viewerImage");
   const token = ++imageSwapToken;
 
   if (image.getAttribute("src") === src) {
@@ -543,8 +702,8 @@ function swapImage(src, alt) {
 }
 
 function stopMedia() {
-  const video = document.getElementById("viewerVideo");
-  const youtube = document.getElementById("viewerYoutube");
+  const video = $("viewerVideo");
+  const youtube = $("viewerYoutube");
 
   if (video.getAttribute("src")) {
     video.pause();
@@ -559,49 +718,42 @@ function stopMedia() {
   }
 }
 
-function openViewer(gameIndex) {
-  const game = galleryGames[gameIndex];
-  if (!game) return;
-  openCollection(game.game, game.images, 0);
-}
-
 function openCollection(title, items, startIndex = 0) {
   if (!items || !items.length) return;
-  currentItems = items;
+  viewerItems = items;
 
-  const viewer = document.getElementById("viewer");
-  document.getElementById("viewerTitle").textContent = title;
+  const viewer = $("viewer");
+  $("viewerTitle").textContent = title;
   viewer.classList.toggle("single", items.length === 1);
 
-  const thumbs = document.getElementById("viewerThumbs");
-  thumbs.innerHTML = items.map((item, i) => {
+  $("viewerThumbs").innerHTML = items.map((item, i) => {
     const thumb = thumbFor(item);
     return `
       <button class="viewer-thumb ${isVideoItem(item) ? "is-video" : ""}" data-index="${i}" aria-label="View item ${i + 1}">
         <span>${i + 1}</span>
-        ${thumb ? `<img src="${thumb}" alt="" onerror="this.remove();">` : ""}
+        ${thumb ? `<img src="${escapeHTML(thumb)}" alt="" onerror="this.remove();">` : ""}
       </button>
     `;
   }).join("");
 
-  thumbs.querySelectorAll(".viewer-thumb").forEach(thumb => {
+  $("viewerThumbs").querySelectorAll(".viewer-thumb").forEach(thumb => {
     thumb.addEventListener("click", () => showItem(Number(thumb.dataset.index)));
   });
 
   viewer.hidden = false;
-  document.body.style.overflow = "hidden";
   showItem(startIndex);
+  viewer.querySelector(".viewer-close").focus();
 }
 
 function showItem(index) {
-  const total = currentItems.length;
-  currentIndex = (index + total) % total;
-  const item = currentItems[currentIndex];
+  const total = viewerItems.length;
+  viewerIndex = (index + total) % total;
+  const item = viewerItems[viewerIndex];
 
-  const stage = document.getElementById("viewerStage");
-  const image = document.getElementById("viewerImage");
-  const video = document.getElementById("viewerVideo");
-  const youtube = document.getElementById("viewerYoutube");
+  const stage = $("viewerStage");
+  const image = $("viewerImage");
+  const video = $("viewerVideo");
+  const youtube = $("viewerYoutube");
   const wasShowingImage = stage.classList.contains("show-image");
 
   stopMedia();
@@ -625,14 +777,13 @@ function showItem(index) {
     swapImage(item.src, item.caption || "");
   }
 
-  document.getElementById("viewerCaption").textContent =
-    `${item.caption || ""}  (${currentIndex + 1} / ${total})`;
+  $("viewerCaption").textContent = `${item.caption || ""}  (${viewerIndex + 1} / ${total})`;
 
-  const note = document.getElementById("viewerNote");
+  const note = $("viewerNote");
   note.textContent = item.note || "";
   note.hidden = !item.note;
 
-  const sourceWrap = document.getElementById("viewerSourceWrap");
+  const sourceWrap = $("viewerSourceWrap");
   sourceWrap.textContent = "";
   if (item.credit || item.link) {
     const label = item.credit ? `Credit: ${item.credit}` : "View original source";
@@ -651,399 +802,90 @@ function showItem(index) {
     sourceWrap.hidden = true;
   }
 
-  document.querySelectorAll(".viewer-thumb").forEach((thumb, i) => {
-    thumb.classList.toggle("active", i === currentIndex);
+  $("viewerThumbs").querySelectorAll(".viewer-thumb").forEach((thumb, i) => {
+    thumb.classList.toggle("active", i === viewerIndex);
   });
 }
 
 function closeViewer() {
   stopMedia();
   imageSwapToken++;
-  document.getElementById("viewer").hidden = true;
-  document.body.style.overflow = "";
+  $("viewer").hidden = true;
 }
 
-// ----- BLOG -----
-function formatDate(dateString) {
-  const date = new Date(dateString + "T00:00:00");
-  return date.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
-}
+// this section is for the routing system, which shows the right screen based on the address bar.
+// Works out which screen to show from the address bar,
+// so the browser's back button and shared links both work.
+function route() {
+  if (viewerIsOpen()) closeViewer();
 
-function slugify(text) {
-  return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-}
+  const path = decodeURIComponent(location.hash.slice(1)).replace(/\/+$/, "");
 
-function postContent(post) {
-  return post.content || post.body || [];
-}
-
-function readingTime(post) {
-  const text = postContent(post).map(block => {
-    if (typeof block === "string") return block;
-    if (block.list) return block.list.join(" ");
-    return block.heading || block.subheading || block.quote || block.caption || "";
-  }).join(" ");
-  const words = text.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
-  return Math.max(1, Math.round(words / 200));
-}
-
-function sortedPosts() {
-  return [...blogPosts].sort((a, b) => b.date.localeCompare(a.date));
-}
-
-function renderBlog() {
-  const list = document.getElementById("blogList");
-  if (!list) return;
-
-  const posts = sortedPosts();
-  list.innerHTML = posts.map((post, i) => {
-    const firstBlock = postContent(post)[0];
-    const intro = post.intro || (typeof firstBlock === "string" ? firstBlock : "");
-    return `
-      <article class="blog-card" data-index="${i}" tabindex="0" role="button" aria-label="Read ${post.title}">
-        <div class="blog-cover ${post.cover ? "" : "missing"}">
-          ${post.cover ? `<img src="${post.cover}" alt="" loading="lazy"
-               onerror="this.parentElement.classList.add('missing'); this.remove();">` : ""}
-        </div>
-        <div class="blog-card-body">
-          <p class="blog-meta">${formatDate(post.date)} · ${readingTime(post)} min read</p>
-          <h3>${post.title}</h3>
-          ${intro ? `<p class="blog-intro">${intro}</p>` : ""}
-          <span class="blog-read">Read post &rarr;</span>
-        </div>
-      </article>
-    `;
-  }).join("");
-
-  list.querySelectorAll(".blog-card").forEach(card => {
-    const open = () => openPost(posts[Number(card.dataset.index)]);
-    card.addEventListener("click", open);
-    card.addEventListener("keydown", event => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        open();
-      }
-    });
-  });
-}
-
-// ----- BLOG READER -----
-function buildReader() {
-  const reader = document.createElement("div");
-  reader.id = "reader";
-  reader.className = "reader";
-  reader.hidden = true;
-  reader.innerHTML = `
-    <div class="reader-backdrop"></div>
-    <button class="reader-close" aria-label="Close post">&times;</button>
-    <article class="reader-panel" id="readerContent"></article>
-  `;
-  document.body.appendChild(reader);
-
-  reader.querySelector(".reader-backdrop").addEventListener("click", closePost);
-  reader.querySelector(".reader-close").addEventListener("click", closePost);
-
-  document.addEventListener("keydown", event => {
-    if (reader.hidden) return;
-    if (event.key === "Escape" && document.getElementById("viewer").hidden) closePost();
-  });
-}
-
-function renderBlock(block) {
-  if (typeof block === "string") return `<p>${block}</p>`;
-
-  if (block.heading) return `<h2>${block.heading}</h2>`;
-  if (block.subheading) return `<h3>${block.subheading}</h3>`;
-
-  if (block.image) {
-    const credit = block.credit
-      ? `<span class="reader-credit">${block.link
-          ? `<a href="${block.link}" target="_blank" rel="noopener">${block.credit} &#8599;</a>`
-          : block.credit}</span>`
-      : "";
-    return `
-      <figure class="reader-figure">
-        <img src="${block.image}" alt="${block.caption || ""}" loading="lazy"
-             onerror="this.parentElement.classList.add('missing'); this.remove();">
-        ${block.caption || credit ? `<figcaption>${block.caption || ""}${credit}</figcaption>` : ""}
-      </figure>
-    `;
-  }
-
-  if (block.youtube) {
-    return `
-      <figure class="reader-figure">
-        <div class="reader-video">
-          <iframe src="https://www.youtube-nocookie.com/embed/${block.youtube}"
-                  title="${block.caption || "Video"}"
-                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>
-        </div>
-        ${block.caption ? `<figcaption>${block.caption}</figcaption>` : ""}
-      </figure>
-    `;
-  }
-
-  if (block.quote) {
-    return `
-      <blockquote>
-        <p>${block.quote}</p>
-        ${block.cite ? `${block.cite}` : ""}
-      </blockquote>
-    `;
-  }
-
-  if (block.list) {
-    return `<ul>${block.list.map(item => `<li>${item}</li>`).join("")}</ul>`;
-  }
-
-  return "";
-}
-
-function openPost(post) {
-  if (!post) return;
-  const reader = document.getElementById("reader");
-  const content = document.getElementById("readerContent");
-  const sources = post.sources || [];
-
-  content.innerHTML = `
-    ${post.cover ? `
-      <div class="reader-cover">
-        <img src="${post.cover}" alt="" onerror="this.parentElement.remove();">
-      </div>` : ""}
-    <p class="reader-meta">${formatDate(post.date)} · ${readingTime(post)} min read</p>
-    <h1 class="reader-title">${post.title}</h1>
-    ${post.intro ? `<p class="reader-intro">${post.intro}</p>` : ""}
-    <div class="reader-body">
-      ${postContent(post).map(renderBlock).join("")}
-    </div>
-    ${sources.length ? `
-      <section class="reader-sources">
-        <h2>Sources</h2>
-        <ol>
-          ${sources.map(source => {
-            const text = typeof source === "string" ? source : source.text;
-            const link = typeof source === "string" ? "" : source.link;
-            return `<li>${text}${link ? ` <a href="${link}" target="_blank" rel="noopener">${link} &#8599;</a>` : ""}</li>`;
-          }).join("")}
-        </ol>
-      </section>` : ""}
-  `;
-
-  reader.hidden = false;
-  reader.scrollTop = 0;
-  document.body.style.overflow = "hidden";
-  history.replaceState(null, "", `#post-${slugify(post.title)}`);
-}
-
-function closePost() {
-  const reader = document.getElementById("reader");
-  reader.hidden = true;
-  document.getElementById("readerContent").innerHTML = "";
-  document.body.style.overflow = "";
-  if (location.hash.startsWith("#post-")) {
-    history.replaceState(null, "", location.pathname + location.search);
-  }
-}
-
-function openPostFromLink() {
-  if (!location.hash.startsWith("#post-")) return;
-  const slug = decodeURIComponent(location.hash.slice(6));
-  const post = blogPosts.find(p => slugify(p.title) === slug);
-  if (post) openPost(post);
-}
-
-// ----- DEVLOG -----
-// Entries are loaded from devlog.json, which admin.html updates.
-let devlogEntries = [];
-let devlogFilter = "All";
-let devlogTimer = null;
-let updateDevlogArrows = () => {};
-const DEVLOG_MAX_THUMBS = 4;
-
-function escapeHTML(text) {
-  return String(text ?? "").replace(/[&<>"']/g, char => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-  }[char]));
-}
-
-function typeClass(type) {
-  return "type-" + String(type || "update").toLowerCase().replace(/[^a-z0-9]+/g, "-");
-}
-
-// Works with both the new "images" list and older single "image" entries
-function entryImages(entry) {
-  if (Array.isArray(entry.images)) return entry.images.filter(Boolean);
-  return entry.image ? [entry.image] : [];
-}
-
-async function loadDevlog() {
-  if (!document.getElementById("devlogTimeline")) return;
-
-  try {
-    const response = await fetch(`devlog.json?t=${Date.now()}`, { cache: "no-store" });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
-    devlogEntries = Array.isArray(data) ? data : [];
-  } catch (error) {
-    console.warn("Devlog could not be loaded:", error);
-    devlogEntries = [];
-  }
-
-  devlogEntries.sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
-  renderDevlogFilters();
-  renderDevlog();
-  window.addEventListener("resize", () => updateDevlogArrows());
-}
-
-function renderDevlogFilters() {
-  const container = document.getElementById("devlogFilters");
-  if (!container) return;
-
-  const games = [...new Set(devlogEntries.map(entry => entry.game).filter(Boolean))];
-  if (games.length < 2) {
-    container.innerHTML = "";
-    container.style.display = "none";
+  if (!path) {
+    showScreen("splash");
     return;
   }
 
-  container.style.display = "";
-  container.innerHTML = ["All", ...games].map(game => `
-    <button class="devlog-filter ${game === devlogFilter ? "active" : ""}" data-game="${escapeHTML(game)}">${escapeHTML(game)}</button>
-  `).join("");
-
-  container.querySelectorAll(".devlog-filter").forEach(button => {
-    button.addEventListener("click", () => applyDevlogFilter(button.dataset.game));
-  });
-}
-
-function devlogEntryHTML(entry, i) {
-  const points = Array.isArray(entry.points) ? entry.points.filter(Boolean) : [];
-  const images = entryImages(entry);
-  const shown = images.slice(0, DEVLOG_MAX_THUMBS);
-  const extra = images.length - shown.length;
-  const visible = devlogFilter === "All" || entry.game === devlogFilter;
-
-  return `
-    <article class="devlog-entry" data-index="${i}" ${visible ? "" : "hidden"}>
-      <span class="devlog-dot ${typeClass(entry.type)}"></span>
-      <div class="devlog-card ${typeClass(entry.type)}">
-        <div class="devlog-header">
-          <time class="devlog-date" datetime="${escapeHTML(entry.date)}">${entry.date ? formatDate(entry.date) : ""}</time>
-          ${entry.type ? `<span class="devlog-type ${typeClass(entry.type)}">${escapeHTML(entry.type)}</span>` : ""}
-        </div>
-        ${entry.game ? `<p class="devlog-game">${escapeHTML(entry.game)}</p>` : ""}
-        <h3>${escapeHTML(entry.title)}</h3>
-        ${entry.summary ? `<p class="devlog-summary">${escapeHTML(entry.summary)}</p>` : ""}
-        ${points.length ? `<ul class="devlog-points">${points.map(point => `<li>${escapeHTML(point)}</li>`).join("")}</ul>` : ""}
-        ${shown.length ? `
-          <div class="devlog-gallery ${shown.length === 1 ? "single" : ""}">
-            ${shown.map((src, n) => `
-              <button class="devlog-image" data-image="${n}" aria-label="Enlarge screenshot ${n + 1}">
-                <img src="${escapeHTML(src)}" alt="${escapeHTML(entry.title)}" loading="lazy"
-                     onerror="this.parentElement.remove();">
-                ${n === shown.length - 1 && extra > 0 ? `<span class="devlog-more">+${extra}</span>` : ""}
-              </button>
-            `).join("")}
-          </div>` : ""}
-      </div>
-    </article>
-  `;
-}
-
-function renderDevlog() {
-  const timeline = document.getElementById("devlogTimeline");
-  if (!timeline) return;
-
-  timeline.classList.toggle("is-empty", devlogEntries.length === 0);
-
-  if (!devlogEntries.length) {
-    timeline.innerHTML = `<p class="devlog-empty">No entries yet. Check back soon!</p>`;
-    updateDevlogArrows = () => {};
+  if (path === "menu") {
+    showScreen("menu");
     return;
   }
 
-  timeline.innerHTML = `
-    <div class="devlog-slider">
-      <button class="devlog-arrow devlog-prev" aria-label="Newer entries">&#8249;</button>
-      <div class="devlog-track" tabindex="0" aria-label="Devlog entries, newest first">
-        ${devlogEntries.map(devlogEntryHTML).join("")}
-      </div>
-      <button class="devlog-arrow devlog-next" aria-label="Older entries">&#8250;</button>
-    </div>
-    <div class="devlog-scale"><span>&larr; Newest</span><span>Oldest &rarr;</span></div>
-  `;
+  const placeholder = PLACEHOLDERS[path];
+  if (placeholder) {
+    $("sectionNumber").textContent = placeholder.number;
+    $("sectionTitle").textContent = placeholder.title;
+    $("sectionText").textContent = placeholder.text;
+    showScreen("section");
+    return;
+  }
 
-  // Screenshot clicks open the viewer with all of that entry's images
-  timeline.querySelectorAll(".devlog-entry").forEach(element => {
-    const entry = devlogEntries[Number(element.dataset.index)];
-    const images = entryImages(entry);
+  const [area, sub, slug] = path.split("/");
 
-    element.querySelectorAll(".devlog-image").forEach(button => {
-      button.addEventListener("click", () => {
-        const items = images.map(src => ({ src, caption: entry.title }));
-        openCollection(entry.title, items, Number(button.dataset.image));
-      });
-    });
-  });
+  if (area === "educational-work") {
+    if (!sub) return renderEducationalHub();
+    if (sub === "university-projects") return renderUniversityProjects();
+    if (sub === "blogs") return slug ? renderBlogPost(slug) : renderBlogList();
+    return renderEducationalHub();
+  }
 
-  // Slider arrows
-  const slider = timeline.querySelector(".devlog-slider");
-  const track = timeline.querySelector(".devlog-track");
-  const prev = timeline.querySelector(".devlog-prev");
-  const next = timeline.querySelector(".devlog-next");
-
-  updateDevlogArrows = () => {
-    const maxScroll = track.scrollWidth - track.clientWidth;
-    slider.classList.toggle("scrollable", maxScroll > 2);
-    prev.disabled = track.scrollLeft <= 2;
-    next.disabled = track.scrollLeft >= maxScroll - 2;
-  };
-
-  prev.addEventListener("click", () => {
-    track.scrollBy({ left: -track.clientWidth * 0.9, behavior: "smooth" });
-  });
-  next.addEventListener("click", () => {
-    track.scrollBy({ left: track.clientWidth * 0.9, behavior: "smooth" });
-  });
-  track.addEventListener("scroll", updateDevlogArrows, { passive: true });
-
-  updateDevlogArrows();
+  // Unknown address: fall back to the menu
+  showScreen("menu");
 }
 
-function applyDevlogFilter(game) {
-  if (game === devlogFilter) return;
-  devlogFilter = game;
-
-  document.querySelectorAll(".devlog-filter").forEach(button => {
-    button.classList.toggle("active", button.dataset.game === game);
-  });
-
-  const timeline = document.getElementById("devlogTimeline");
-  timeline.classList.add("fading");
-
-  clearTimeout(devlogTimer);
-  devlogTimer = setTimeout(() => {
-    timeline.querySelectorAll(".devlog-entry").forEach(element => {
-      const entry = devlogEntries[Number(element.dataset.index)];
-      element.hidden = !(game === "All" || entry.game === game);
-    });
-
-    const track = timeline.querySelector(".devlog-track");
-    if (track) track.scrollLeft = 0;
-    updateDevlogArrows();
-
-    timeline.classList.remove("fading");
-  }, 180);
+function enterSite() {
+  location.hash = "menu";
 }
 
 // ----- START -----
-document.getElementById("year").textContent = new Date().getFullYear();
 buildViewer();
-buildReader();
-renderProjects();
-renderInspirationFilters();
-renderInspiration();
-renderBlog();
-openPostFromLink();
-loadDevlog();
+
+$("enterButton").addEventListener("click", enterSite);
+$("backButton").addEventListener("click", () => {
+  location.hash = "menu";
+});
+$("pageBack").addEventListener("click", () => {
+  location.hash = pageParent;
+});
+
+document.addEventListener("keydown", event => {
+  // The viewer handles its own keys first
+  if (event.defaultPrevented || viewerIsOpen()) return;
+
+  const onSplash = screens.splash.classList.contains("is-active");
+  const onSection = screens.section.classList.contains("is-active");
+  const onPage = screens.page.classList.contains("is-active");
+
+  if (onSplash && event.key === "Enter" && document.activeElement !== $("enterButton")) {
+    event.preventDefault();
+    enterSite();
+  }
+
+  if (event.key === "Escape") {
+    if (onSection) location.hash = "menu";
+    if (onPage) location.hash = pageParent;
+  }
+});
+
+window.addEventListener("hashchange", route);
+route();
