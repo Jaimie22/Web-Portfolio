@@ -175,7 +175,7 @@ const EDUCATIONAL_BLOGS = [
         link: "https://tiga.org/news/weathering-the-storm-tiga-research-reveals-uk-games-dev-sector-continues-to-grow-despite-global-sector-downturn"
       },
     ]
-  },
+  }, 
   {
     title: "Blog 4 - Are you connected? a Guide on networking In the Creative Industry",
     date: "2026-10-09",
@@ -183,6 +183,68 @@ const EDUCATIONAL_BLOGS = [
     intro: "Get your in roads into the Industry. Here's how?",
     content: [  
       "Within the gaming indusrty, or indeed any industry, having a strong network of people you can depend on, arguably, can bolster your chances of success, even more so over and above just the work that you do. What do I mean by this? Well, for example, you want to apply for a specific role. Perhaps someone in your network, may know of an opportunity upcoming, either within thier company, or else where. That would be considered highly advantageous to you, because you have someone in your network, that has given you this information.",   
+      { heading: "Why networking is absoluetly vital to you?" },
+      "As aforementioned being \"well connected\" as it were, can be highly advantageous for a plethora of reasons, including insider information. There is also the aspect of collaboration. You may get the opportuinty to work on a project, that you might consider \"the best thing you've done\", and it's something that can be added to your repertiore. There can also be many opportunities for mentorship and support, helping you or someone you know, further their careers happily. Knowing someone that you can turn to quite readily, for the key piece of information you need, game changing!",
+      "For a little context on why networking is critical to you, a study was conducted by Lnkedin, a highly reputable social media platform. Their study highlighted that, of a sample of 5 million job applications, those with a 7x higher success rate, were found to be owned by those of whom, have a connection in some form, to a person or group, they have specifically targeted in their chosen fields, as opposed to someone without. Again the saying \"It's who you know!\"",
+      { heading: "Who do you need to know?" },
+      "State the obvious, you don't need to know everyone, to have a strong network. Having a key selection of people, that you know you can utilise, as and when, is the objective. So, who do you need to know? Well this depends! If you lean more into the software enginerring side of game development, having a good core of like minded engineers would be advantageous to you, as they can of course support, share code, develop a piece you know you may not be able to, and so on. Or if you lean more to the creative, having a selection of artists, varying in all disciplines, could be there do to exactly the same thing, support, share, collaborate.", 
+      { heading: "Are there events you can attend?" },      
+      "Simply put, yes! There's a whole world of meet and greets, industry specific events, online events, the list goes on. Theres a ton of places that you as the developer, can place yourself, to be better seen for you, and your work, and to align yourself with selected individuals you know, can help build your network. Let's take a very popluar one, and an event thats almost upon us (at the time of writing this), The Scottish Game Developers Association(SGDA). This events is where you want to be, if you want to foster new relationships, collaborations, have your name spread across the right people. I know I'll be there!",
+      "Believe it or not, there are people out there, that love to hear peoples journey's/success stories. Take me for example, almost five years ago, I was a bus driver. No disrespect to bus drivers, but to me, that was a deeply unfulfilling life. So at thirty three years old, I took a gamble, and went back to education. Haven't looked back since! As your network grows, you will come across people that can draw from your story, and help promote you in some sense! it is possible!",
+      "Even with all of this, you can of course reach out by leaving business cards, and CV's with the right people. Providing its short and sweet! Time is money!",
+      {
+        image: "assets/Blogs/MatrixOperator.jpg",
+        caption: "The Operator - The Matrix.",
+        credit: "Warner Bros. & Desktop Backgrounds",
+      },
+      {
+        quote: "Position youself, where the battle is already won. - Sun Tzu",
+        cite: "https://burningforsuccess.com/sun-tzu-quotes/"
+      },
+      " The quote above, references the principles taught by Sun Tzu. An historic figure in war strategy. In its essence it means, you may have a much easier time of fighting your way through the challenges of the Gaming Industry, If you rely on more than what you know. Perhaps who you know?",
+
+    ],
+    sources: 
+    [
+      {
+        text: "Batchelder, C. (2026). <em>LinkedIn Research Reveals a Hiring Blind Spot That Shuts Out Gen Z</em>. Inc.",
+        link: "https://www.inc.com/colleen-batchelder/linkedin-research-reveals-a-hiring-blind-spot-that-shuts-out-gen-z/91417424"
+      },
+      {
+        text: "The Level Design Book. <em>Communities</em>.",
+        link: "https://book.leveldesignbook.com/appendix/communities"
+      },
+      {
+        text: "Scottish Game Developers Association. <em>Events</em>.",
+        link: "https://sgda.co.uk/events"
+      },
+      {
+        text: "Scottish Games Network (2026). <em>Games Talks Live Returns to Edinburgh, Dundee and Glasgow this March</em>.",
+        link: "https://scottishgames.net/2026/02/27/games-talks-live-returns-to-edinburgh-dundee-glasgow-march-2026/"
+      },
+      {
+        text: "Scottish Games Network (2026). <em>Glasgow Indie Games Fest 2026: Tickets and Call for Speakers Now Open</em>.",
+        link: "https://scottishgames.net/2026/03/27/glasgow-indie-games-fest-announces-2026/"
+      },
+      {
+        text: "Grads in Games (2021). <em>What we're doing for 2021/22</em>.",
+        link: "https://gradsingames.com/news/what-were-doing-for-2021-22/"
+      },
+      {
+        text: "Grads in Games. <em>Games dev portfolio advice</em>.",
+        link: "https://gradsingames.com/services/students/games-industry-portfolio-advice/"
+      }
+    ]   
+  },
+  {
+    title: "Blog 5 - Are you connected? a Guide on networking In the Creative Industry",
+    date: "2026-10-16",
+    cover: "assets/Blogs/MatrixOperator.jpg",
+    intro: "Get your in roads into the Industry. Here's how?",
+    content: [
+      "Before we delve further into this specific topic, let me pose this question first? You have a subscription to the very popular AI music creator, Suno. Now, you make a masterpiece of a song on this platform. Who does it belong to?",
+      "You? The creator? or Suno? and its developers?",
+      "And this is the purpose of this blog. Ascertaining IP rights. This blog will deep dive into this topic.",
       { heading: "Why networking is absoluetly vital to you?" },
       "As aforementioned being \"well connected\" as it were, can be highly advantageous for a plethora of reasons, including insider information. There is also the aspect of collaboration. You may get the opportuinty to work on a project, that you might consider \"the best thing you've done\", and it's something that can be added to your repertiore. There can also be many opportunities for mentorship and support, helping you or someone you know, further their careers happily. Knowing someone that you can turn to quite readily, for the key piece of information you need, game changing!",
       "For a little context on why networking is critical to you, a study was conducted by Lnkedin, a highly reputable social media platform. Their study highlighted that, of a sample of 5 million job applications, those with a 7x higher success rate, were found to be owned by those of whom, have a connection in some form, to a person or group, they have specifically targeted in their chosen fields, as opposed to someone without. Again the saying \"It's who you know!\"",
