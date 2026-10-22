@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jaimie Neilson | Level Design &amp; Environment Art</title>
-  <meta name="description" content="Portfolio of Jaimie Neilson, level designer and environment artist at JazzGames.">
+  <title>Jaimie Neilson | UWS Student - Aspiring Level Design &amp; Environment Art</title>
+  <meta name="description" content="Portfolio of Jaimie Neilson, Aspiring level designer and environment artist.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,13 +18,13 @@
     <div class="splash-shade"></div>
 
     <div class="splash-content">
-      <p class="splash-kicker">Digital Portfolio of :</p>
+      <p class="splash-kicker">The portfolio of :</p>
       <h1 class="splash-title">Jaimie Neilson</h1>
-      <p class="splash-tagline">UWS Student &middot; Aspiring Level designer / Environmental artist</p>
-      <button id="enterButton" class="enter-button">Enter</button>
+      <p class="splash-tagline"><em>UWS Student : Aspiring Level Designer &middot; Environmental Artist</em></p>
+      <button id="enterButton" class="enter-button">Enjoy!</button>
     </div>
 
-    <p class="splash-hint">Enjoy the portfolio</p>
+    <p class="splash-hint">Enjoy my work!</p>
   </section>
 
   <!-- ===== MAIN MENU ===== -->
@@ -32,38 +32,47 @@
     <a href="#" class="menu-brand">Jaimie Neilson</a>
 
     <a href="#about" class="menu-option"
-       style="--image: url('assets/menu/about.jpg'); --fallback: linear-gradient(160deg, #2b2233, #0b0b10); --delay: 0.1s;">
+       style="--image: url('assets/gallery/ME.png'); --fallback: linear-gradient(160deg, #2b2233, #0b0b10); --delay: 0.1s;">
       <span class="menu-number">01</span>
       <span class="menu-label">About</span>
       <span class="menu-sub">Who I am, and the journey from the bus depot to level design.</span>
     </a>
 
-    <a href="#personal-projects" class="menu-option"
-       style="--image: url('assets/menu/personal-projects.jpg'); --fallback: linear-gradient(160deg, #1e2a2b, #0b0b10); --delay: 0.2s;">
-      <span class="menu-number">02</span>
-      <span class="menu-label">Personal Projects</span>
-      <span class="menu-sub">The worlds I'm building at JazzGames.</span>
-    </a>
-
     <a href="#educational-work" class="menu-option"
-       style="--image: url('assets/menu/educational-work.jpg'); --fallback: linear-gradient(160deg, #2b2620, #0b0b10); --delay: 0.3s;">
-      <span class="menu-number">03</span>
+       style="--image: url('assets/gallery/UWSPaisley.jpg'); --fallback: linear-gradient(160deg, #2b2620, #0b0b10); --delay: 0.2s;">
+      <span class="menu-number">02</span>
       <span class="menu-label">Educational Work</span>
       <span class="menu-sub">Projects and research from my studies at UWS.</span>
     </a>
+
+    <a href="#personal-projects" class="menu-option"
+       style="--image: url('assets/gallery/Personal.jpg'); --fallback: linear-gradient(160deg, #1e2a2b, #0b0b10); --delay: 0.3s;">
+      <span class="menu-number">03</span>
+      <span class="menu-label">Personal Projects</span>
+      <span class="menu-sub">The worlds I'm building with my own hands.</span>
+    </a>
+
+    <a href="#cv" class="menu-option"
+       style="--image: url('assets/gallery/SocMedIcons.png'); --fallback: linear-gradient(160deg, #22263a, #0b0b10); --delay: 0.4s;">
+      <span class="menu-number">04</span>
+      <span class="menu-label">CV &amp; Socials</span>
+      <span class="menu-sub">My CV, and where to find me online.</span>
+    </a>
   </nav>
 
-  <!-- ===== COMING SOON PAGE ===== -->
+  <!-- ===== SECTION PAGE (About, Coming Soon) ===== -->
   <section id="section" class="screen section-screen" aria-live="polite">
+    <div id="sectionImage" class="section-image" hidden></div>
     <button id="backButton" class="back-button">&larr; Back</button>
     <div class="section-content">
       <p id="sectionNumber" class="section-number"></p>
       <h2 id="sectionTitle"></h2>
-      <p id="sectionText" class="section-text"></p>
+      <div id="sectionText" class="section-text"></div>
+      <button id="sectionAction" class="enter-button section-action" hidden>Begin</button>
     </div>
   </section>
 
-  <!-- ===== CONTENT PAGES ===== -->
+  <!-- ===== CONTENT PAGES (Educational Work, CV & Socials) ===== -->
   <section id="page" class="screen page-screen">
     <header class="page-bar">
       <button id="pageBack" class="back-button">&larr; Back</button>

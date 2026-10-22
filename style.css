@@ -5,8 +5,8 @@
 :root {
   --bg: #0b0b10;
   --surface: #16161f;
-  --text: #f1ebe2;
-  --muted: #8d8a99;
+  --text: #ffffff;
+  --muted: #d5d2e0;
   --accent: #e94560;
   --accent-hover: #ff5c77;
   --border: rgba(255, 255, 255, 0.08);
@@ -359,21 +359,22 @@ button {
 }
 
 /* =====================================================
-   COMING SOON PAGE
+   SECTION PAGE (About, Coming Soon)
    ===================================================== */
 .section-screen {
+  --about-opacity: 0.16; /* How visible the photo is: 0 = invisible, 1 = full */
+
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  padding: 6rem 2rem 4rem;
   overflow-y: auto;
   background: radial-gradient(ellipse at top, #1a1a26 0%, var(--bg) 70%);
 }
 
 .section-screen .back-button {
-  position: absolute;
+  position: fixed;
   top: 1.5rem;
   left: 1.75rem;
+  z-index: 3;
 }
 
 .back-button {
@@ -382,7 +383,7 @@ button {
   font-size: 1.1rem;
   letter-spacing: 0.15em;
   color: var(--text);
-  background: transparent;
+  background: rgba(11, 11, 16, 0.6);
   border: 1px solid rgba(241, 235, 226, 0.3);
   cursor: pointer;
   transition: background 0.3s, border-color 0.3s;
@@ -395,8 +396,41 @@ button {
   outline: none;
 }
 
+/* Photo behind the text: centred, faint, edges fading into the background */
+.section-image {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto 85%;
+  opacity: var(--about-opacity);
+  filter: grayscale(0.3);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 35%, transparent 72%);
+  mask-image: radial-gradient(ellipse at center, #000 35%, transparent 72%);
+  pointer-events: none;
+}
+
+.section-screen.is-active .section-image {
+  animation: photoIn 1.6s var(--ease) both;
+}
+
+@keyframes photoIn {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: var(--about-opacity);
+    transform: none;
+  }
+}
+
 .section-content {
-  max-width: 640px;
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: auto;
   text-align: center;
 }
 
@@ -406,6 +440,7 @@ button {
 
 .section-screen.is-active .section-content > :nth-child(2) { animation-delay: 0.1s; }
 .section-screen.is-active .section-content > :nth-child(3) { animation-delay: 0.2s; }
+.section-screen.is-active .section-content > :nth-child(4) { animation-delay: 0.35s; }
 
 .section-number {
   margin: 0;
@@ -416,18 +451,32 @@ button {
 }
 
 .section-content h2 {
-  margin: 0.25rem 0 1rem;
+  margin: 0.25rem 0 1.5rem;
   font-family: var(--font-display);
   font-size: clamp(3rem, 9vw, 6rem);
   font-weight: 400;
   line-height: 0.95;
 }
 
-.section-text {
-  margin: 0;
-  font-size: 1.05rem;
-  line-height: 1.7;
+.section-text p {
+  margin: 0 0 1.1rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
   color: var(--muted);
+  text-shadow: 0 1px 12px rgba(11, 11, 16, 0.9);
+}
+
+.section-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Begin button under the About text */
+.section-action {
+  margin-top: 2.5rem;
+}
+
+.section-action[hidden] {
+  display: none;
 }
 
 /* =====================================================
@@ -545,7 +594,7 @@ button {
 }
 
 /* =====================================================
-   UNIVERSITY PROJECT CARDS
+   PROJECT CARDS (University and Personal Projects)
    ===================================================== */
 .project-grid {
   display: grid;
@@ -557,9 +606,8 @@ button {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  min-height: 380px;
-  padding: 1.5rem;
+  justify-content: flex-start;
+  padding: calc(56.25% + 1.25rem) 1.5rem 1.5rem; /* top space = a 16:9 image area */
   overflow: hidden;
   isolation: isolate;
   text-align: left;
@@ -570,27 +618,31 @@ button {
   transition: border-color 0.3s, transform 0.3s var(--ease);
 }
 
+/* The cover image: always shown in full inside a 16:9 area at the top */
 .project-card::before {
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: -2;
-  background: var(--image, none) center / cover no-repeat, linear-gradient(160deg, #22222e, #0b0b10);
-  filter: grayscale(0.6) brightness(0.55);
+  aspect-ratio: 16 / 9;
+  background: var(--image, none) center / contain no-repeat, linear-gradient(160deg, #22222e, #0b0b10);
+  filter: grayscale(0.4) brightness(0.75);
   transition: filter 0.6s var(--ease), transform 0.9s var(--ease);
 }
 
+/* A soft fade where the image meets the text */
 .project-card::after {
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: -1;
-  background: linear-gradient(
-    to top,
-    rgba(11, 11, 16, 0.95) 0%,
-    rgba(11, 11, 16, 0.6) 45%,
-    rgba(11, 11, 16, 0.1) 100%
-  );
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(to top, var(--surface) 0%, rgba(22, 22, 31, 0) 35%);
+  pointer-events: none;
 }
 
 .project-card:hover,
@@ -602,8 +654,8 @@ button {
 
 .project-card:hover::before,
 .project-card:focus-visible::before {
-  filter: grayscale(0) brightness(0.8);
-  transform: scale(1.06);
+  filter: grayscale(0) brightness(1);
+  transform: scale(1.03);
 }
 
 .project-card.no-gallery {
@@ -648,7 +700,8 @@ button {
 }
 
 .project-cta {
-  margin-top: 1rem;
+  margin-top: auto;
+  padding-top: 1rem;
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -942,6 +995,165 @@ button {
 }
 
 /* =====================================================
+   CV & SOCIALS
+   ===================================================== */
+.cv-panels {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.cv-panels:empty {
+  display: none;
+}
+
+.cv-panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.75rem 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.cv-panel-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.cv-meta {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.cv-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 1.6rem;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.15em;
+  color: var(--text);
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid rgba(241, 235, 226, 0.4);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.cv-button:hover,
+.cv-button:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.cv-button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.cv-button.primary:hover,
+.cv-button.primary:focus-visible {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.cv-subheading {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.social-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.4rem;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: border-color 0.3s, transform 0.3s var(--ease);
+}
+
+.social-card:hover,
+.social-card:focus-visible {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  outline: none;
+}
+
+.social-badge {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--accent);
+  background: rgba(233, 69, 96, 0.12);
+  border: 1px solid rgba(233, 69, 96, 0.35);
+}
+
+.social-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.social-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.social-handle {
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+.social-note {
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.social-arrow {
+  align-self: flex-start;
+  color: var(--muted);
+  transition: color 0.2s, transform 0.2s;
+}
+
+.social-card:hover .social-arrow {
+  color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
+/* =====================================================
    GALLERY VIEWER
    ===================================================== */
 .viewer {
@@ -1209,7 +1421,7 @@ button {
   }
 
   .project-card::before {
-    filter: grayscale(0.2) brightness(0.65);
+    filter: grayscale(0.2) brightness(0.9);
   }
 }
 

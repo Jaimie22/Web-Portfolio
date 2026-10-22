@@ -1,16 +1,65 @@
 
-// ----- PAGES THAT AREN'T BUILT YET -----
+
+// ----- SIMPLE PAGES (About, Coming Soon) -----
+// text: one item per paragraph.
+// image: optional photo shown faintly behind the text.
+// action: optional button under the text that takes visitors to the menu.
 const PLACEHOLDERS = {
   "about": {
     number: "01",
     title: "About",
-    text: "Coming soon."
-  },
-  "personal-projects": {
-    number: "02",
-    title: "Personal Projects",
-    text: "Coming soon."
-  }
+    image: "assets/gallery/",
+    action: "Begin",
+    text: [
+      "Hi, Thanks for taking time to look over my digital portfolio. I'll do my best to keep this as short, and sweet as possible. I appreciate you'll be very busy!",
+      "Well, I lived a different life up until 2023. For the longest time, I was a bus driver in Glasgow. Nothing wrong with being a bus driver! But to me, it was deeply unfulfilling. From the age of two, Ive always been a gamer. Fascinated by the sights, the sounds, the hours you could lose to a great story! This has always been what I feel I was made for. More specifically, I love taking a moment to appreciate the environments, the worlds I play in. Something about level design, genuinely speaks to me, and its something i'm really passionate about!",
+      "Fast forward to 2023, I begin my academic career again, at the age of 33. As a husband, as a father. I just knew I wanted to take the risk, and attempt to pursue a life in my greatest passion, to actually live a life doing what i've always been a fan of! creating digital world s to get lost in!",
+      "Again, thanks for taking time to view my portfolio. I hope you enjoy!"
+    ]
+  }  
+};
+
+// ----- CV & SOCIALS -----
+// cv: path to your CV as a PDF. Leave "" to hide the CV panel.
+// email: optional. A public email can attract spam, so leave "" to hide it.
+// socials: one card per platform. Any platform with link: "" is hidden.
+const CV_PAGE = {
+  intro: "Everything you need to get in touch, see more of my work, or take a closer look at my experience.",
+  cv: "assets/cv/jaimie-neilson-cv.pdf",
+  updated: "October 2026",
+  email: "",
+  socials: [
+    {
+      name: "LinkedIn",
+      handle: "Jaimie Neilson",
+      link: "https://www.linkedin.com/in/jaimie-neilson-354a2a112",
+      note: "Career updates and my professional network."
+    },
+    {
+      name: "ArtStation",
+      handle: "",
+      link: "",
+      note: "Environment art and level design breakdowns."
+    },
+    {
+      name: "GitHub",
+      handle: "Jaimie22",
+      link: "https://github.com/Jaimie22",
+      note: "Code, projects and this website's source."
+    },
+    {
+      name: "itch.io",
+      handle: "",
+      link: "",
+      note: "Playable builds and game jam entries."
+    },
+    {
+      name: "YouTube",
+      handle: "",
+      link: "",
+      note: "Devlogs, trailers and walkthroughs."
+    }
+  ]
 };
 
 // ----- EDUCATIONAL WORK: UNIVERSITY PROJECTS -----
@@ -23,31 +72,74 @@ const PLACEHOLDERS = {
 const UNIVERSITY_PROJECTS = [
   {
     title: "R.E.M - A game of Dreams",
-    status: "In planning",
-    module: "",
-    description: "A cube-world puzzle game themed around REM sleep.",
-    cover: "assets/REMFrontCover.png",
+    status: "In Development",
+    description: "A 3D cube-world puzzle game, themed around REM sleep.",
+    cover: "assets/gallery/REMFrontCover.png",
     gallery: [
-      { src: "assets/gallery/rem/01.png", caption: "Screenshot 1" },
+      { src: "assets/gallery/REMFrontCover.png", caption: "Cover Art(Not Final)" },
       { src: "assets/gallery/rem/02.png", caption: "Screenshot 2" },
       { src: "assets/gallery/rem/03.png", caption: "Screenshot 3" }
     ]
   },
   {
     title: "Awesome Defence Force",
-    status: "In planning",
-    module: "",
-    description: "A 2.5D turn-based strategy game that combines all the cliche and cheese of a typical 80's soldier action game. AWESOME!",
+    status: "In Development",
+    description: "A 3D turn-based strategy game that combines all the cliche and cheese of a typical 80's soldier action game. AWESOME!",
     cover: "images/awesome-defence-force.jpg",
     gallery: [
       { src: "assets/gallery/awesome-defence-force/01.png", caption: "Screenshot 1" },
       { src: "assets/gallery/awesome-defence-force/02.png", caption: "Screenshot 2" },
       { src: "assets/gallery/awesome-defence-force/03.png", caption: "Screenshot 3" }
     ]
+  },
+  {
+    title: "TON 618",
+    status: "In Development", 
+    description: "By using javascript, Typescrpt, and BabylonJS, I created a light simulation of what we percieve would happen, if an astronaut were to fall into the biggest black hole known to man!",
+    cover: "assets/gallery/TON618Cover.png",
+    gallery: [
+      { src: "assets/gallery/TONEL2.png", caption: "Element 2 - The Void" },
+      { src: "assets/gallery/awesome-defence-force/02.png", caption: "Screenshot 2" },
+      { src: "assets/gallery/awesome-defence-force/03.png", caption: "Screenshot 3" }
+    ]
   }
 ];
 
-// EDUCATIONAL WORK: BLOGS
+// ----- PERSONAL PROJECTS -----
+// cover: the card's background image.
+// engine: optional second tag, e.g. "Unity 6 · HDRP". Leave "" to hide it.
+// gallery: what opens when the card is clicked, in this order.
+//   Screenshot:  { src: "path", caption: "..." }
+//   YouTube:     { youtube: "VIDEO_ID", caption: "..." }
+//   Video file:  { video: "path.mp4", poster: "path.png", caption: "..." }
+const PERSONAL_PROJECTS = [
+  {
+    title: "Enjoy your stay!",
+    status: "In Development",
+    engine: "Unity 6",
+    description: "A chilling horror, set in an abandoned hotel. Your haunted hosts? Three sinister porcelain dolls, that think freely!",
+    cover: "assets/gallery/EYSCover1.jpg",
+    gallery: [
+      { src: "assets/gallery/EYSCover1.jpg", caption: "Screenshot 1" },
+      { src: "assets/gallery/EYSSmokingRoom.png", caption: "Screenshot 2" },
+      { src: "assets/gallery/EYSCinema.png", caption: "Screenshot 3" }
+    ]
+  },
+  {
+    title: "Aetherfall",
+    status: "In Planning",
+    engine: "Unity 6",
+    description: "An all Scottish RPG. Uncover the story of how the Aether comet fell to earth, and the consequences of its arrival.",
+    cover: "assets/gallery/AetherfallCover.png",
+    gallery: [
+      { src: "assets/gallery/aetherfall/01.png", caption: "Screenshot 1" },
+      { src: "assets/gallery/aetherfall/02.png", caption: "Screenshot 2" },
+      { src: "assets/gallery/aetherfall/03.png", caption: "Screenshot 3" }
+    ]
+  },
+];
+
+// ----- EDUCATIONAL WORK: BLOGS -----
 // In any text you can use <em>italics</em> and <strong>bold</strong>.
 // sources: listed at the end. Each is { text: "...", link: "..." }.
 const EDUCATIONAL_BLOGS = [
@@ -321,9 +413,9 @@ const screens = {
 
 let pageParent = "menu";
 
-//These functions are used to escape HTML, create slugs, format dates, and count items for display.
-//They are used throughout the code to ensure that the content is displayed correctly and safely.
-//A slug is a URL-friendly version of a string, typically used for creating readable and SEO-friendly URLs. 
+// ----- HELPERS -----
+// escapeHTML makes text safe to put on the page.
+// slugify turns a title into a URL-friendly piece, e.g. "Blog 1" -> "blog-1".
 function escapeHTML(text) {
   return String(text ?? "").replace(/[&<>"']/g, char => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
@@ -385,37 +477,74 @@ function showPage({ html, crumbs, parent }) {
   showScreen("page");
 }
 
-// Educational work breadcrumbs, used on all educational pages.
-// The last crumb is the current page, so it has no path.
+// ----- SIMPLE PAGES (About, Coming Soon) -----
+function renderSimplePage(page) {
+  $("sectionNumber").textContent = page.number;
+  $("sectionTitle").textContent = page.title;
+
+  // One <p> per paragraph (a single line of text still works too)
+  const paragraphs = Array.isArray(page.text) ? page.text : [page.text || ""];
+  $("sectionText").innerHTML = paragraphs.map(paragraph => `<p>${paragraph}</p>`).join("");
+
+  // Optional photo behind the text
+  const imageLayer = $("sectionImage");
+  if (imageLayer) {
+    if (page.image) {
+      imageLayer.style.backgroundImage = `url('${page.image}')`;
+      imageLayer.hidden = false;
+    } else {
+      imageLayer.style.backgroundImage = "";
+      imageLayer.hidden = true;
+    }
+  }
+
+  // Optional button under the text, which replaces the corner Back button
+  const actionButton = $("sectionAction");
+  if (actionButton) {
+    if (page.action) {
+      actionButton.textContent = page.action;
+      actionButton.hidden = false;
+      $("backButton").hidden = true;
+    } else {
+      actionButton.hidden = true;
+      $("backButton").hidden = false;
+    }
+  }
+
+  screens.section.scrollTop = 0;
+  showScreen("section");
+}
+
+// ----- BREADCRUMBS -----
 const MENU_CRUMB = { label: "Menu", path: "menu" };
 const EDU_CRUMB = { label: "Educational Work", path: "educational-work" };
 const PROJECTS_CRUMB = { label: "University Projects", path: "educational-work/university-projects" };
 const BLOGS_CRUMB = { label: "Educational Blogs", path: "educational-work/blogs" };
+const CV_CRUMB = { label: "CV & Socials", path: "cv" };
 
-// Renders the hub page for educational work, with links to university projects and blogs.
-// Each link is a card with a background image, number, title and subtitle.
+// ----- EDUCATIONAL WORK -----
 function renderEducationalHub() {
   showPage({
     parent: "menu",
     crumbs: [MENU_CRUMB, EDU_CRUMB],
     html: `
       <header class="page-header">
-        <p class="page-kicker">03</p>
+        <p class="page-kicker">02</p>
         <h1 class="page-title">Educational Work</h1>
         <p class="page-intro">The games I've built and the research I've written as part of my studies at UWS Paisley.</p>
       </header>
 
       <div class="hub">
         <a href="#educational-work/university-projects" class="menu-option"
-           style="--image: url('assets/menu/university-projects.jpg'); --fallback: linear-gradient(160deg, #1f2433, #0b0b10); --delay: 0.15s;">
-          <span class="menu-number">03.1</span>
+           style="--image: url('assets/gallery/GraduatingWork.jpg'); --fallback: linear-gradient(160deg, #1f2433, #0b0b10); --delay: 0.15s;">
+          <span class="menu-number">02.1</span>
           <span class="menu-label">University Projects</span>
           <span class="menu-sub">Games and coursework from my degree.</span>
         </a>
 
         <a href="#educational-work/blogs" class="menu-option"
            style="--image: url('assets/Blogs/BlogFrontCover.jpg'); --fallback: linear-gradient(160deg, #2e2026, #0b0b10); --delay: 0.25s;">
-          <span class="menu-number">03.2</span>
+          <span class="menu-number">02.2</span>
           <span class="menu-label">Educational Blogs</span>
           <span class="menu-sub">My research and writing on level design and environment art.</span>
         </a>
@@ -424,8 +553,6 @@ function renderEducationalHub() {
   });
 }
 
-// Renders the list of university projects, newest first.
-// Each project is a card with a cover image, title, status, module and description.
 function renderUniversityProjects() {
   const cards = UNIVERSITY_PROJECTS.map((project, i) => {
     const gallery = Array.isArray(project.gallery) ? project.gallery : [];
@@ -451,7 +578,7 @@ function renderUniversityProjects() {
     crumbs: [MENU_CRUMB, EDU_CRUMB, PROJECTS_CRUMB],
     html: `
       <header class="page-header">
-        <p class="page-kicker">03.1</p>
+        <p class="page-kicker">02.1</p>
         <h1 class="page-title">University Projects</h1>
         <p class="page-intro">Games and coursework from my degree. Select a project to see its gallery.</p>
       </header>
@@ -469,13 +596,58 @@ function renderUniversityProjects() {
   });
 }
 
+// ----- PERSONAL PROJECTS -----
+const PERSONAL_CRUMB = { label: "Personal Projects", path: "personal-projects" };
+
+function renderPersonalProjects() {
+  const cards = PERSONAL_PROJECTS.map((project, i) => {
+    const gallery = Array.isArray(project.gallery) ? project.gallery : [];
+    const hasGallery = gallery.length > 0;
+    const style = project.cover ? `style="--image: url('${escapeHTML(project.cover)}')"` : "";
+
+    return `
+      <button class="project-card ${hasGallery ? "" : "no-gallery"}" data-index="${i}" ${style}
+              ${hasGallery ? `aria-label="View gallery for ${escapeHTML(project.title)}"` : "disabled"}>
+        <div class="project-meta">
+          ${project.status ? `<span class="tag">${escapeHTML(project.status)}</span>` : ""}
+          ${project.engine ? `<span class="tag subtle">${escapeHTML(project.engine)}</span>` : ""}
+        </div>
+        <h3>${escapeHTML(project.title)}</h3>
+        ${project.description ? `<p>${escapeHTML(project.description)}</p>` : ""}
+        ${hasGallery ? `<span class="project-cta">View gallery &middot; ${countLabel(gallery)}</span>` : ""}
+      </button>
+    `;
+  }).join("");
+
+  showPage({
+    parent: "menu",
+    crumbs: [MENU_CRUMB, PERSONAL_CRUMB],
+    html: `
+      <header class="page-header">
+        <p class="page-kicker">03</p>
+        <h1 class="page-title">Personal Projects</h1>
+        <p class="page-intro">The worlds I'm building with my own hands at JazzGames. Select a project to see its gallery.</p>
+      </header>
+      ${cards
+        ? `<div class="project-grid">${cards}</div>`
+        : `<p class="empty-note">Projects coming soon.</p>`}
+    `
+  });
+
+  $("pageContent").querySelectorAll(".project-card:not(.no-gallery)").forEach(card => {
+    card.addEventListener("click", () => {
+      const project = PERSONAL_PROJECTS[Number(card.dataset.index)];
+      openCollection(project.title, project.gallery, 0);
+    });
+  });
+}
+
 // ----- BLOGS -----
 function postContent(post) {
   return post.content || post.body || [];
 }
 
-// Estimates reading time in minutes, based on 200 words per minute.
-// Returns at least 1 minute, even for very short posts.
+// Estimates reading time at 200 words per minute (minimum 1 minute).
 function readingTime(post) {
   const text = postContent(post).map(block => {
     if (typeof block === "string") return block;
@@ -484,16 +656,13 @@ function readingTime(post) {
   }).join(" ");
   const words = text.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.round(words / 200));
-}  
+}
 
-// Sorts posts by date, newest first.
-// Returns a new array, does not modify the original.
+// Sorts posts by date, newest first, without changing the original list.
 function sortedPosts(posts) {
   return [...posts].sort((a, b) => String(b.date).localeCompare(String(a.date)));
 }
 
-// Renders the list of blog posts, newest first.
-// Each post is a card with a cover image, title, date, reading time and intro.
 function renderBlogList() {
   const cards = sortedPosts(EDUCATIONAL_BLOGS).map(post => {
     const firstBlock = postContent(post)[0];
@@ -519,7 +688,7 @@ function renderBlogList() {
     crumbs: [MENU_CRUMB, EDU_CRUMB, BLOGS_CRUMB],
     html: `
       <header class="page-header">
-        <p class="page-kicker">03.2</p>
+        <p class="page-kicker">02.2</p>
         <h1 class="page-title">Educational Blogs</h1>
         <p class="page-intro">Research and writing on level design and environment art, with sources for everything I reference.</p>
       </header>
@@ -530,8 +699,6 @@ function renderBlogList() {
   });
 }
 
-// Renders a single block of content for a blog post.
-// Returns the HTML for that block.
 function renderBlock(block) {
   if (typeof block === "string") return `<p>${block}</p>`;
 
@@ -640,8 +807,73 @@ function renderBlogPost(slug) {
   });
 }
 
-// This section is for the viewer, which shows images and videos in a modal overlay.
-// It can be opened from any screen, and the back button closes it.
+// ----- CV & SOCIALS -----
+function renderCvPage() {
+  const socials = (CV_PAGE.socials || []).filter(social => social.link);
+
+  const cvPanel = CV_PAGE.cv ? `
+    <section class="cv-panel">
+      <div>
+        <h2 class="cv-panel-title">Curriculum Vitae</h2>
+        ${CV_PAGE.updated ? `<p class="cv-meta">Last updated ${escapeHTML(CV_PAGE.updated)}</p>` : ""}
+      </div>
+      <div class="cv-actions">
+        <a class="cv-button primary" href="${escapeHTML(CV_PAGE.cv)}" target="_blank" rel="noopener">View CV &#8599;</a>
+        <a class="cv-button" href="${escapeHTML(CV_PAGE.cv)}" download>Download PDF</a>
+      </div>
+    </section>
+  ` : "";
+
+  const emailPanel = CV_PAGE.email ? `
+    <section class="cv-panel">
+      <div>
+        <h2 class="cv-panel-title">Get in touch</h2>
+        <p class="cv-meta">${escapeHTML(CV_PAGE.email)}</p>
+      </div>
+      <div class="cv-actions">
+        <a class="cv-button primary" href="mailto:${escapeHTML(CV_PAGE.email)}">Send an email</a>
+      </div>
+    </section>
+  ` : "";
+
+  const socialCards = socials.map(social => `
+    <a class="social-card" href="${escapeHTML(social.link)}" target="_blank" rel="noopener">
+      <span class="social-badge" aria-hidden="true">${escapeHTML(social.name.charAt(0))}</span>
+      <span class="social-text">
+        <span class="social-name">${escapeHTML(social.name)}</span>
+        ${social.handle ? `<span class="social-handle">${escapeHTML(social.handle)}</span>` : ""}
+        ${social.note ? `<span class="social-note">${escapeHTML(social.note)}</span>` : ""}
+      </span>
+      <span class="social-arrow" aria-hidden="true">&#8599;</span>
+    </a>
+  `).join("");
+
+  showPage({
+    parent: "menu",
+    crumbs: [MENU_CRUMB, CV_CRUMB],
+    html: `
+      <header class="page-header">
+        <p class="page-kicker">04</p>
+        <h1 class="page-title">CV &amp; Socials</h1>
+        ${CV_PAGE.intro ? `<p class="page-intro">${escapeHTML(CV_PAGE.intro)}</p>` : ""}
+      </header>
+
+      <div class="cv-panels">
+        ${cvPanel}
+        ${emailPanel}
+      </div>
+
+      <section class="social-section">
+        <h2 class="cv-subheading">Find me online</h2>
+        ${socialCards
+          ? `<div class="social-grid">${socialCards}</div>`
+          : `<p class="empty-note">Links coming soon.</p>`}
+      </section>
+    `
+  });
+}
+
+// ----- GALLERY VIEWER -----
 let viewerItems = [];
 let viewerIndex = 0;
 let imageSwapToken = 0;
@@ -885,7 +1117,7 @@ function closeViewer() {
   $("viewer").hidden = true;
 }
 
-// this section is for the routing system, which shows the right screen based on the address bar.
+// ----- ROUTING -----
 // Works out which screen to show from the address bar,
 // so the browser's back button and shared links both work.
 function route() {
@@ -903,12 +1135,18 @@ function route() {
     return;
   }
 
-  const placeholder = PLACEHOLDERS[path];
-  if (placeholder) {
-    $("sectionNumber").textContent = placeholder.number;
-    $("sectionTitle").textContent = placeholder.title;
-    $("sectionText").textContent = placeholder.text;
-    showScreen("section");
+    if (path === "personal-projects") {
+    renderPersonalProjects();
+    return;
+  }
+
+  if (PLACEHOLDERS[path]) {
+    renderSimplePage(PLACEHOLDERS[path]);
+    return;
+  }
+
+  if (path === "cv") {
+    renderCvPage();
     return;
   }
 
@@ -933,9 +1171,17 @@ function enterSite() {
 buildViewer();
 
 $("enterButton").addEventListener("click", enterSite);
+
 $("backButton").addEventListener("click", () => {
   location.hash = "menu";
 });
+
+if ($("sectionAction")) {
+  $("sectionAction").addEventListener("click", () => {
+    location.hash = "menu";
+  });
+}
+
 $("pageBack").addEventListener("click", () => {
   location.hash = pageParent;
 });
